@@ -39,8 +39,18 @@
       <file leaf-file-name="filter_cpp.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="140">
               <caret line="72" column="33" lean-forward="true" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="322">
+              <caret line="101" column="26" lean-forward="false" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
+=======
+            <state relative-caret-position="223">
+              <caret line="72" column="33" lean-forward="false" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+>>>>>>> 0e0b52614f79853112441a9fd17c10d938d56807
+>>>>>>> 41b8a1f8fc597ef4ba6cf8504b77f27f1db2f09a
               <folding />
             </state>
           </provider>
@@ -483,12 +493,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1494654525421</updated>
+<<<<<<< HEAD
+      <workItem from="1494654528768" duration="6238000" />
+=======
       <workItem from="1494654528768" duration="6591000" />
+>>>>>>> 0e0b52614f79853112441a9fd17c10d938d56807
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="6832000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="6238000" />
+=======
+    <option name="totallyTimeSpent" value="6591000" />
+>>>>>>> 0e0b52614f79853112441a9fd17c10d938d56807
+>>>>>>> 41b8a1f8fc597ef4ba6cf8504b77f27f1db2f09a
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="7" />
@@ -615,8 +637,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="242">
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="322">
+          <caret line="101" column="26" lean-forward="false" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
+=======
+        <state relative-caret-position="223">
+>>>>>>> 41b8a1f8fc597ef4ba6cf8504b77f27f1db2f09a
           <caret line="72" column="33" lean-forward="false" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+>>>>>>> 0e0b52614f79853112441a9fd17c10d938d56807
           <folding />
         </state>
       </provider>
