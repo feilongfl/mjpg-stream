@@ -26,24 +26,19 @@ bool filter_init(const char * args, void** filter_ctx) {
     return true;
 }
 
-/**
-    Called by the OpenCV plugin upon each frame
-*/
-void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
-    // TODO insert your filter code here
-    //dst = src;
-    //cvtColor(src,dst,CV_BGR2GRAY);
+struct HSVRange{
+    int iLowH;
+    int iHighH;
+    int iLowS;
+    int iHighS;
+    int iLowV;
+    int iHighV;
+};
 
+Mat ColorFinder(Mat src,HSVRange hsvRange = {100,124,0,255,0,255})
+{
     Mat imgHSV;
     vector<Mat> hsvSplit;
-
-    //color
-    int iLowH = 100;
-    int iHighH = 124;
-    int iLowS = 0;
-    int iHighS = 255;
-    int iLowV = 0;
-    int iHighV = 255;
 
     cvtColor(src, imgHSV, COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV
 
@@ -53,8 +48,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     merge(hsvSplit,imgHSV);
     Mat imgThresholded;
 
-    inRange(imgHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imgThresholded);
     //Threshold the image
+    inRange(imgHSV, Scalar(hsvRange.iLowH, hsvRange.iLowS, hsvRange.iLowV),
+            Scalar(hsvRange.iHighH, hsvRange.iHighS, hsvRange.iHighV), imgThresholded);
 
     //开操作 (去除一些噪点)
     Mat element = getStructuringElement(MORPH_RECT, Size(5, 5));
@@ -63,7 +59,19 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     //闭操作 (连接一些连通域)
     morphologyEx(imgThresholded, imgThresholded, MORPH_CLOSE, element);
 
-    dst = imgThresholded;
+    return imgThresholded;
+}
+
+/**
+    Called by the OpenCV plugin upon each frame
+*/
+void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
+    // TODO insert your filter code here
+    //dst = src;
+    //cvtColor(src,dst,CV_BGR2GRAY);
+
+    dst = ColorFinder(src);
+
 }
 
 /**
