@@ -71,8 +71,8 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     //cvtColor(src,dst,CV_BGR2GRAY);
 
     Mat calcMat = ColorFinder(src);
-    cornerHarris(calcMat,dst,2,3,0.2);
-    threshold(dst,dst,0.0001,255,CV_THRESH_BINARY);
+    cornerHarris(calcMat,dst,2,3,0.3);
+    threshold(dst,dst,0.00001,255,CV_THRESH_BINARY);
 
 }
 
