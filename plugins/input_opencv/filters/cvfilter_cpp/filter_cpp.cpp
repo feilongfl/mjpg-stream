@@ -38,7 +38,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     vector<Mat> hsvSplit;
 
     //color
-    int iLowH = 100;
+    int iLowH = 67;
     int iHighH = 140;
     int iLowS = 90;
     int iHighS = 255;
