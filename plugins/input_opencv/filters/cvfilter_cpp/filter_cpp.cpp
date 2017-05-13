@@ -38,11 +38,11 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     vector<Mat> hsvSplit;
 
     //color
-    int iLowH = 67;
-    int iHighH = 140;
-    int iLowS = 5;
+    int iLowH = 100;
+    int iHighH = 124;
+    int iLowS = 0;
     int iHighS = 255;
-    int iLowV =5;
+    int iLowV =0;
     int iHighV = 255;
 
     cvtColor(src, imgHSV, COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV
