@@ -23,7 +23,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f1a909c2-4019-4407-94c6-a5aa35d31765" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp" afterPath="$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp" />
     </list>
     <list id="862d1682-b575-4436-a30a-35fe1ef6fd73" name="回退" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -37,14 +36,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="filter_cpp.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="filter_cpp.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
             <state relative-caret-position="322">
               <caret line="101" column="26" lean-forward="false" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
 =======
             <state relative-caret-position="223">
+=======
+            <state relative-caret-position="242">
+>>>>>>> Stashed changes
               <caret line="72" column="33" lean-forward="false" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
 >>>>>>> 0e0b52614f79853112441a9fd17c10d938d56807
               <folding />
@@ -52,7 +55,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="40">
@@ -489,31 +492,48 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1494654525421</updated>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
       <workItem from="1494654528768" duration="6238000" />
 =======
       <workItem from="1494654528768" duration="6591000" />
 >>>>>>> 0e0b52614f79853112441a9fd17c10d938d56807
+=======
+      <workItem from="1494654528768" duration="6981000" />
+>>>>>>> Stashed changes
     </task>
+    <task id="LOCAL-00001" summary="回退">
+      <created>1494661497511</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1494661497511</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="6238000" />
 =======
     <option name="totallyTimeSpent" value="6591000" />
 >>>>>>> 0e0b52614f79853112441a9fd17c10d938d56807
+=======
+    <option name="totallyTimeSpent" value="6981000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5030257" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32730263" sideWeight="0.4969743" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Serial Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32730263" sideWeight="0.4969743" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Serial Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -559,6 +579,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="回退" />
+    <option name="LAST_COMMIT_MESSAGE" value="回退" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -615,16 +639,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="50" lean-forward="false" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+        <state relative-caret-position="242">
+          <caret line="72" column="33" lean-forward="false" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp">
+    <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         <state relative-caret-position="322">
           <caret line="101" column="26" lean-forward="false" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
@@ -632,6 +657,10 @@
         <state relative-caret-position="223">
           <caret line="72" column="33" lean-forward="false" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
 >>>>>>> 0e0b52614f79853112441a9fd17c10d938d56807
+=======
+        <state relative-caret-position="40">
+          <caret line="2" column="50" lean-forward="false" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
