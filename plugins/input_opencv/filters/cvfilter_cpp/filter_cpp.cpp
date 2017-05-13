@@ -76,7 +76,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     Canny(calMat,can,100,200,3);
     vector<Vec4i> lines;
     HoughLinesP(can,lines,1,CV_PI / 80, 50,10);
-    dst = src;
+    dst = Mat(src.rows,src.cols,src.type());
     for (size_t i = 0;i < lines.size();i++)
     {
         Vec4i l = lines[i];
