@@ -6,6 +6,7 @@
 */
 
 #include "opencv2/opencv.hpp"
+#include <iostream>
 
 using namespace cv;
 using namespace std;
@@ -71,6 +72,16 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     //cvtColor(src,dst,CV_BGR2GRAY);
 
     dst = ColorFinder(src);
+    Mat can;
+    Canny(dst,can,100,200,3);
+    vector<Vec4i> lines;
+    HoughLinesP(can,lines,1,CV_PI / 80, 50,10);
+
+    for (size_t i = 0;i < lines.size();i++)
+    {
+        Vec4i l = lines[i];
+        line(dst,Point(l[0],l[1]),Point(l[2],l[3]),Scalar(0));
+    }
 
 }
 
