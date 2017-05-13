@@ -70,7 +70,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     //dst = src;
     //cvtColor(src,dst,CV_BGR2GRAY);
 
-    dst = ColorFinder(src);
+    Mat calcMat = ColorFinder(src);
+    cornerHarris(calcMat,dst,2,3,0.1);
+
 
 }
 
