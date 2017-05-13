@@ -70,7 +70,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     //dst = src;
     //cvtColor(src,dst,CV_BGR2GRAY);
 
-    dst = ColorFinder(src);
+    dst = ColorFinder(src);//赛道提取
 
 }
 
