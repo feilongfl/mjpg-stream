@@ -70,13 +70,13 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     // TODO insert your filter code here
     //dst = src;
     //cvtColor(src,dst,CV_BGR2GRAY);
-
-    dst = ColorFinder(src);
+    Mat calMat;
+    calMat = ColorFinder(src);
     Mat can;
-    Canny(dst,can,100,200,3);
+    Canny(calMat,can,100,200,3);
     vector<Vec4i> lines;
     HoughLinesP(can,lines,1,CV_PI / 80, 50,10);
-
+    dst = src;
     for (size_t i = 0;i < lines.size();i++)
     {
         Vec4i l = lines[i];
