@@ -73,7 +73,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     Mat calcMat = ColorFinder(src);
     cornerHarris(calcMat,dst,2,3,0.3);
     //threshold(dst,dst,0.00001,255,CV_THRESH_BINARY);
-    normalize(dst,dst,0,255);
+    normalize(dst,dst,0,255,32);
 
 }
 
