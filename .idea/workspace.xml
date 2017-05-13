@@ -21,11 +21,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1a909c2-4019-4407-94c6-a5aa35d31765" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp" afterPath="$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp" />
-    </list>
+    <list default="true" id="f1a909c2-4019-4407-94c6-a5aa35d31765" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,8 +36,8 @@
       <file leaf-file-name="filter_cpp.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+            <state relative-caret-position="142">
+              <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -467,12 +463,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1494654525421</updated>
-      <workItem from="1494654528768" duration="2090000" />
+      <workItem from="1494654528768" duration="2793000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2090000" />
+    <option name="totallyTimeSpent" value="2793000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -580,8 +576,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/input_opencv/filters/cvfilter_cpp/filter_cpp.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+        <state relative-caret-position="142">
+          <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
           <folding />
         </state>
       </provider>
