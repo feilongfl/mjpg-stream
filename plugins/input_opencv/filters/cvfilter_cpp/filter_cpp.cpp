@@ -86,7 +86,17 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     HoughLines(can, lines, 1, CV_PI/180, 100, 0, 0 );
     vector<Vec2f> line4;
 
-    cout << "################################" << endl;
+
+    int rhosum=0;
+    for( size_t i = 0; i < lines.size(); i++ )
+    {
+        float theta = lines[i][1];
+        if(theta > CV_PI / 4 && theta < CV_PI * 3 / 4) {
+            rhosum += lines[i][0];
+        }
+    }
+    rhosum /= lines.size();
+//    cout << "################################" << endl;
     for( size_t i = 0; i < lines.size(); i++ )
     {
         float rho = lines[i][0], theta = lines[i][1];
@@ -97,16 +107,30 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         pt1.y = cvRound(y0 + 1000*(a));
         pt2.x = cvRound(x0 - 1000*(-b));
         pt2.y = cvRound(y0 - 1000*(a));
-        cout << "************************" << endl
-             << rho << "," << theta << endl
-             << "************************" << endl;
-        if(theta > 1) {
-            line(dst, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
-        } else{
+        //cout << "************************" << endl
+        //     << rho << "," << theta << endl
+        //     << "************************" << endl;
+        if(theta > CV_PI / 4 && theta < CV_PI * 3 / 4) {
+            if(rho > rhosum){
+                cout << "r"<< rho << endl;
+                line(dst, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
+            }
+            else
+            {
+                cout << "g"<< rho << endl;
+                line(dst, pt1, pt2, Scalar(0,255 ,0), 3, CV_AA);
+            }
+        }
+        else if(theta > CV_PI * 3 / 4 && theta < CV_PI * 5 / 4)
+        {
+            line(dst, pt1, pt2, Scalar(255,0, 255), 3, CV_AA);
+        }
+        else
+        {
             line(dst, pt1, pt2, Scalar(0, 255, 255), 3, CV_AA);
         }
     }
-    cout << "################################" << endl;
+    //cout << "################################" << endl;
 
 }
 
