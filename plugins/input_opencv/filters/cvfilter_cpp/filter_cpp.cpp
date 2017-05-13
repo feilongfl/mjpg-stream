@@ -69,9 +69,12 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     // TODO insert your filter code here
     //dst = src;
     //cvtColor(src,dst,CV_BGR2GRAY);
-
-    dst = ColorFinder(src);
-
+    Mat calcMat;
+    calcMat = ColorFinder(src);//赛道轮廓识别
+    cornerHarris(calcMat, dst, 2, 3, 0.01);//搜索赛道角点
+    //TODO:
+    //赛道仿射变换
+    //前景检测
 }
 
 /**
