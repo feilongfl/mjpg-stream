@@ -1,0 +1,83 @@
+/home/feilong/下载/clion-2017.1.1/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/feilong/文档/workspace/fr/mjpg-streamer
+-- The C compiler identification is GNU 5.4.0
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for include file sys/inotify.h
+-- Looking for include file sys/inotify.h - found
+-- Found OpenCV: /usr/local (found version "3.2.0") 
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.5m.so (found version "3.5.2") 
+-- Found PythonInterp: /usr/bin/python3.5 (found version "3.5.2") 
+-- Found NUMPY: /usr/local/lib/python3.5/dist-packages/numpy/core/include  
+-- Found components for NumPy
+-- NUMPY_ROOT_DIR    = /usr/local
+-- NUMPY_INCLUDES    = /usr/local/lib/python3.5/dist-packages/numpy/core/include
+-- NUMPY_LIBRARIES   = 
+-- NUMPY_API_VERSION = 1.12.1
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+-- Checking for module 'libgphoto2'
+--   No package 'libgphoto2' found
+-- Could NOT find GPHOTO2 (missing:  GPHOTO2_LIBRARY GPHOTO2_INCLUDE_DIR) 
+-- Looking for include file linux/videodev2.h
+-- Looking for include file linux/videodev2.h - found
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Could NOT find SDL (missing:  SDL_LIBRARY SDL_INCLUDE_DIR) 
+-- 
+-- The following features have been enabled:
+
+ * PLUGIN_INPUT_FILE , File input plugin
+ * PLUGIN_INPUT_HTTP , HTTP input proxy plugin
+ * PLUGIN_INPUT_OPENCV , OpenCV input plugin
+ * PLUGIN_CVFILTER_CPP , OpenCV example filter
+ * PLUGIN_CVFILTER_PY , OpenCV python filter
+ * PLUGIN_INPUT_UVC , Video 4 Linux input plugin
+ * PLUGIN_OUTPUT_FILE , File output plugin
+ * PLUGIN_OUTPUT_HTTP , HTTP server output plugin
+ * PLUGIN_OUTPUT_RTSP , RTSP output plugin
+ * PLUGIN_OUTPUT_UDP , UDP output stream plugin
+
+-- The following OPTIONAL packages have been found:
+
+ * PythonLibs
+ * PythonInterp
+ * Numpy
+ * Threads
+
+-- The following REQUIRED packages have been found:
+
+ * OpenCV
+
+-- The following features have been disabled:
+
+ * WXP_COMPAT , Enable compatibility with WebcamXP
+ * PLUGIN_INPUT_RASPICAM , Raspberry Pi input camera plugin (unmet dependencies)
+ * PLUGIN_INPUT_PTP2 , PTP2 input plugin (unmet dependencies)
+ * ENABLE_HTTP_MANAGEMENT , Enable experimental HTTP management option
+ * PLUGIN_OUTPUT_VIEWER , SDL output viewer plugin (unmet dependencies)
+
+-- The following OPTIONAL packages have not been found:
+
+ * Gphoto2
+ * SDL
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/feilong/文档/workspace/fr/mjpg-streamer/cmake-build-debug

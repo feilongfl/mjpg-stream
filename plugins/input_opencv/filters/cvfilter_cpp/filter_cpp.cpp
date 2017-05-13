@@ -32,7 +32,38 @@ bool filter_init(const char * args, void** filter_ctx) {
 void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     // TODO insert your filter code here
     //dst = src;
-    cvtColor(src,dst,CV_BGR2GRAY);
+    //cvtColor(src,dst,CV_BGR2GRAY);
+
+    Mat imgHSV;
+    vector<Mat> hsvSplit;
+
+    //color
+    int iLowH = 100;
+    int iHighH = 140;
+    int iLowS = 90;
+    int iHighS = 255;
+    int iLowV = 90;
+    int iHighV = 255;
+
+    cvtColor(src, imgHSV, COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV
+
+    //因为我们读取的是彩色图，直方图均衡化需要在HSV空间做
+    split(imgHSV, hsvSplit);
+    equalizeHist(hsvSplit[2],hsvSplit[2]);
+    merge(hsvSplit,imgHSV);
+    Mat imgThresholded;
+
+    inRange(imgHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imgThresholded);
+    //Threshold the image
+
+    //开操作 (去除一些噪点)
+    Mat element = getStructuringElement(MORPH_RECT, Size(5, 5));
+    morphologyEx(imgThresholded, imgThresholded, MORPH_OPEN, element);
+
+    //闭操作 (连接一些连通域)
+    morphologyEx(imgThresholded, imgThresholded, MORPH_CLOSE, element);
+
+    dst = imgThresholded;
 }
 
 /**
