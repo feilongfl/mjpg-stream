@@ -40,9 +40,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     //color
     int iLowH = 67;
     int iHighH = 140;
-    int iLowS = 10;
+    int iLowS = 5;
     int iHighS = 255;
-    int iLowV =10;
+    int iLowV =5;
     int iHighV = 255;
 
     cvtColor(src, imgHSV, COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV
