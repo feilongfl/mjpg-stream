@@ -7,6 +7,7 @@
 
 #include "opencv2/opencv.hpp"
 #include <iostream>
+#include <conio.h>
 
 using namespace cv;
 using namespace std;
@@ -66,7 +67,11 @@ Mat ColorFinder(Mat src,HSVRange hsvRange = {100,124,0,255,0,255})
 
 int changeVal(int add,int cut,int val,int step,int max = 255,int min = 0)
 {
-	int key = waitKey(1);
+	int key;
+	if (!kbhit())
+		return val;
+	else
+		key = getch();
 
 	if (key == add)
 		val = (val < max - step)? val + step : val;
