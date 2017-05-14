@@ -1,4 +1,3 @@
 
-
-
-add_library(kbhit kbhit.c)
+AUX_SOURCE_DIRECTORY(. DIR_TEST1_SRCS)
+ADD_LIBRARY ( kbhit ${DIR_TEST1_SRCS})
