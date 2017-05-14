@@ -63,9 +63,22 @@ Mat ColorFinder(Mat src,HSVRange hsvRange = {100,124,0,255,0,255})
     return imgThresholded;
 }
 
+
+int changeVal(int add,int cut,int val,int step,int max = 255,int min = 0)
+{
+	int key = cvWaitkey(1);
+
+	if (key == add)
+		val = (val < max - step)? val + step : val;
+	else if (key == cut)
+		val = (val > min + step) ? val - step : val;
+
+	return val;
+}
 /**
     Called by the OpenCV plugin upon each frame
 */
+int a = 60, b = 50, c = 0;
 void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     // TODO insert your filter code here
     //dst = src;
@@ -77,10 +90,14 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 
     vector<Vec4i> lines;
-    int a,b,c;
-    cout << "input a b c:";
-    cin >> a >> b >> c;
-    cout << endl;
+	
+
+	changeVal('q', 'w', a, 1);
+	changeVal('a', 's', b, 1);
+	changeVal('z', 'x', c, 1);
+    //cout << "input a b c:";
+    //cin >> a >> b >> c;
+    //cout << endl;
     cout << "[a,b,c] = [" << a <<"." << b << "," << c << "]" << endl;
     HoughLinesP(can,lines,1,CV_PI / a, b, c);
     //dst = Mat(src.rows,src.cols,src.type());
