@@ -103,7 +103,7 @@ int changeVal(int add,int cut,int val,int step,int max = 255,int min = 0)
 		return val;
 	else
 		key = getchar();
-	cout << "@@@@@@@@@@@@@" << key << "@@@@@@@@@@@@@@" << endl;
+	//cout << "@@@@@@@@@@@@@" << key << "@@@@@@@@@@@@@@" << endl;
 
 	if (key == add)
 		val = (val < max - step)? val + step : val;
@@ -129,9 +129,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     vector<Vec4i> lines;
 	
 
-	changeVal('q', 'w', a, 1);
-	changeVal('a', 's', b, 1);
-	changeVal('z', 'x', c, 1);
+	a = changeVal('q', 'w', a, 1);
+	b = changeVal('a', 's', b, 1);
+	c = changeVal('z', 'x', c, 1);
     //cout << "input a b c:";
     //cin >> a >> b >> c;
     //cout << endl;
