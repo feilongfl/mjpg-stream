@@ -66,7 +66,7 @@ Mat ColorFinder(Mat src,HSVRange hsvRange = {100,124,0,255,0,255})
 
 int changeVal(int add,int cut,int val,int step,int max = 255,int min = 0)
 {
-	int key = cvWaitkey(1);
+	int key = waitKey(1);
 
 	if (key == add)
 		val = (val < max - step)? val + step : val;
