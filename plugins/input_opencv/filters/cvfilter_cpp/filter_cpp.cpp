@@ -7,7 +7,7 @@
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
-#include "kbhit.h"
+#include "kbhit/kbhit.h"
 #include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
