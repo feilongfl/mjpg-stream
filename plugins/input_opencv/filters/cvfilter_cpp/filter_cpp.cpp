@@ -77,7 +77,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 
     vector<Vec4i> lines;
-    HoughLinesP(can,lines,1,CV_PI / 80, 50,10);
+    HoughLinesP(can,lines,1,CV_PI / 80, 100,0);
     //dst = Mat(src.rows,src.cols,src.type());
 	dst = src;
 	cout << "lines.size = " << lines.size() << endl;
