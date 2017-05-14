@@ -5,9 +5,9 @@
     At the moment, only the input_opencv.so plugin supports filter plugins.
 */
 
-#include "opencv2/opencv.hpp"
+#include <opencv2/opencv.hpp>
 #include <iostream>
-#include <conio.h>
+#include "kbhit.h"
 
 using namespace cv;
 using namespace std;
