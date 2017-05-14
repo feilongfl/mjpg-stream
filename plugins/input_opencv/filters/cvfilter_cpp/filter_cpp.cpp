@@ -8,6 +8,10 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include "kbhit.h"
+#include <stdio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 using namespace cv;
 using namespace std;
@@ -71,7 +75,7 @@ int changeVal(int add,int cut,int val,int step,int max = 255,int min = 0)
 	if (!kbhit())
 		return val;
 	else
-		key = getch();
+		key = getchar();
 
 	if (key == add)
 		val = (val < max - step)? val + step : val;
