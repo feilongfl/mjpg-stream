@@ -84,7 +84,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     for (size_t i = 0;i < lines.size();i++)
     {
         Vec4i l = lines[i];
-        line(dst,Point(l[0],l[1]),Point(l[2],l[3]),Scalar(255));
+        line(dst,Point(l[0],l[1]),Point(l[2],l[3]),Scalar(0,255,0));
     }
     //dst = can;
 
