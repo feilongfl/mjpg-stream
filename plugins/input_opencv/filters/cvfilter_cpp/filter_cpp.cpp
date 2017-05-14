@@ -103,7 +103,7 @@ int changeVal(int add,int cut,int val,int step,int max = 255,int min = 0)
 		return val;
 	else
 		key = getchar();
-	cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@" << endl;
+	cout << "@@@@@@@@@@@@@" << key << "@@@@@@@@@@@@@@" << endl;
 
 	if (key == add)
 		val = (val < max - step)? val + step : val;
