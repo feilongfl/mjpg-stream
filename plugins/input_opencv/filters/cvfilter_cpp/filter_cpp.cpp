@@ -115,7 +115,7 @@ int changeVal(int add,int cut,int val,int step,int max = 255,int min = 0)
 /**
     Called by the OpenCV plugin upon each frame
 */
-int a = 60, b = 50, c = 0;
+int a = 180, b = 80, c = 0;
 void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     // TODO insert your filter code here
     //dst = src;
@@ -136,7 +136,8 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     //cin >> a >> b >> c;
     //cout << endl;
     cout << "[a,b,c] = [" << a <<"." << b << "," << c << "]" << endl;
-    HoughLinesP(can,lines,1,CV_PI / a, b, c);
+    //HoughLinesP(can,lines,1,CV_PI / a, b, c);
+	HoughLines(can, lines, 1, CV_PI / a, b);
     //dst = Mat(src.rows,src.cols,src.type());
 	dst = src;
 	cout << "lines.size = " << lines.size() << endl;
