@@ -78,12 +78,13 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
     vector<Vec4i> lines;
     HoughLinesP(can,lines,1,CV_PI / 80, 50,10);
-    dst = Mat(src.rows,src.cols,src.type());
+    //dst = Mat(src.rows,src.cols,src.type());
+	dst = src;
 	cout << "lines.size = " << lines.size() << endl;
     for (size_t i = 0;i < lines.size();i++)
     {
         Vec4i l = lines[i];
-        //line(dst,Point(l[0],l[1]),Point(l[2],l[3]),Scalar(255));
+        line(dst,Point(l[0],l[1]),Point(l[2],l[3]),Scalar(255));
     }
     //dst = can;
 
