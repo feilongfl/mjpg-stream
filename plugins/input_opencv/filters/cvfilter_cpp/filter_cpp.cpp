@@ -267,6 +267,9 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc)//去除背景图像，原始图像
 /**
 Called by the OpenCV plugin upon each frame
 */
+Mat LastImg;
+bool work = false;
+
 void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	// TODO insert your filter code here
 
@@ -278,10 +281,14 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	{
 		calMat = ColorFinder(src); //背景提取
 		dst = KeystoneCorrection(calMat, src);//梯形校正
+		LastImg = dst;
+		work = true;
 	}
 	catch (char const* ex)
 	{
 		cout << ex << endl;
+		if(work)
+			dst = LastImg;
 	}
 	
 }
