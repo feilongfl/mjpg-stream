@@ -71,13 +71,16 @@ Mat ColorFinder(Mat src,HSVRange hsvRange = {100,120,0,255,0,255},int elementSiz
 
 ////////////////////////////////////////////
 //直线 交点
-struct LINE
-{
-    Point pStart;
-    Point pEnd;
+
+struct lines_s {
+    Vec2f line;
+    float rho;
+    float theta;
+    Point pt1;
+    Point pt2;
 };
 
-Point CrossPoint(const LINE *line1, const LINE *line2)
+Point CrossPoint(const lines_s *line1, const lines_s *line2)
 {
     //    if(!SegmentIntersect(line1->pStart, line1->pEnd, line2->pStart, line2->pEnd))
     //    {// segments not cross
@@ -85,27 +88,27 @@ Point CrossPoint(const LINE *line1, const LINE *line2)
     //    }
     Point pt = {0,0};
     // line1's cpmponent
-    double X1 = line1->pEnd.x - line1->pStart.x;//b1
-    double Y1 = line1->pEnd.y - line1->pStart.y;//a1
+    double X1 = line1->pt2.x - line1->pt1.x;//b1
+    double Y1 = line1->pt2.y - line1->pt1.y;//a1
     // line2's cpmponent
-    double X2 = line2->pEnd.x - line2->pStart.x;//b2
-    double Y2 = line2->pEnd.y - line2->pStart.y;//a2
+    double X2 = line2->pt2.x - line2->pt1.x;//b2
+    double Y2 = line2->pt2.y - line2->pt1.y;//a2
     // distance of 1,2
-    double X21 = line2->pStart.x - line1->pStart.x;
-    double Y21 = line2->pStart.y - line1->pStart.y;
+    double X21 = line2->pt1.x - line1->pt1.x;
+    double Y21 = line2->pt1.y - line1->pt1.y;
     // determinant
     double D = Y1*X2 - Y2*X1;// a1b2-a2b1
     //
     if (D == 0) return pt;
     // cross point
-    pt.x = (X1*X2*Y21 + Y1*X2*line1->pStart.x - Y2*X1*line2->pStart.x) / D;
+    pt.x = (X1*X2*Y21 + Y1*X2*line1->pt1.x - Y2*X1*line2->pt1.x) / D;
     // on screen y is down increased !
-    pt.y = -(Y1*Y2*X21 + X1*Y2*line1->pStart.y - X2*Y1*line2->pStart.y) / D;
+    pt.y = -(Y1*Y2*X21 + X1*Y2*line1->pt1.y - X2*Y1*line2->pt1.y) / D;
     // segments intersect.
-    if ((abs(pt.x - line1->pStart.x - X1 / 2) <= abs(X1 / 2)) &&
-        (abs(pt.y - line1->pStart.y - Y1 / 2) <= abs(Y1 / 2)) &&
-        (abs(pt.x - line2->pStart.x - X2 / 2) <= abs(X2 / 2)) &&
-        (abs(pt.y - line2->pStart.y - Y2 / 2) <= abs(Y2 / 2)))
+    if ((abs(pt.x - line1->pt1.x - X1 / 2) <= abs(X1 / 2)) &&
+        (abs(pt.y - line1->pt1.y - Y1 / 2) <= abs(Y1 / 2)) &&
+        (abs(pt.x - line2->pt1.x - X2 / 2) <= abs(X2 / 2)) &&
+        (abs(pt.y - line2->pt1.y - Y2 / 2) <= abs(Y2 / 2)))
     {
         return pt;
     }
@@ -142,13 +145,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 
 //    cout << "################################" << endl;
-    struct lines_s {
-        Vec2f line;
-        float rho;
-        float theta;
-        Point pt1;
-        Point pt2;
-    };
+
     vector<lines_s> lineUps,lineDowns,lineLefts,lineRights;
     lines_s lineUp,lineDown,lineLeft,lineRight;
     //区分上下左右
@@ -224,13 +221,15 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     line(dst, lineRight.pt1, lineRight.pt2, Scalar(255, 255, 0), 3, CV_AA);
 
     //计算直线交点坐标
-    LINE line1,line2;
-    line1.pStart = lineRight.pt1;
-    line1.pEnd = lineRight.pt2;
-    line2.pStart = lineUp.pt1;
-    line2.pEnd = lineUp.pt2;
-    Point cross = CrossPoint(&line1, &line2);
-    circle(dst,cross,5, Scalar(0, 0, 255));
+    Point crossUL = CrossPoint(&lineLeft, &lineUp);
+    Point crossUR = CrossPoint(&lineRight, &lineUp);
+    Point crossDL = CrossPoint(&lineLeft, &lineDown);
+    Point crossDR = CrossPoint(&lineRight, &lineDown);
+    circle(dst,crossUL,10, Scalar(0, 0, 0),3);
+    circle(dst,crossUR,10, Scalar(0, 0, 0),3);
+    circle(dst,crossDL,10, Scalar(0, 0, 0),3);
+    circle(dst,crossDR,10, Scalar(0, 0, 0),3);
+
 }
 
 /**
