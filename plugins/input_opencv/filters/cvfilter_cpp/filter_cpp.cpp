@@ -75,11 +75,11 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     calMat = ColorFinder(src);
     Mat can;
     Canny(calMat,can,100,200,3);
-    dst = calMat;
-    Mat bin;
-    cvtColor(can, bin, COLOR_GRAY2BGR);
+
+    Mat canBgr;
+    cvtColor(calMat, canBgr, COLOR_GRAY2BGR);
     vector<Vec2f> lines;
-    HoughLines(can, lines, 1, CV_PI/180, 100, 0, 0 );
+    HoughLines(canBgr, lines, 1, CV_PI/180, 100, 0, 0 );
 
     for( size_t i = 0; i < lines.size(); i++ )
     {
