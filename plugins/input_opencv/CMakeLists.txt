@@ -29,7 +29,7 @@ if (PLUGIN_INPUT_OPENCV)
     target_link_libraries(input_opencv ${OpenCV_LIBS} mmal_core mmal_util mmal_vc_client vcos bcm_host)
     
     add_subdirectory(filters/cvfilter_cpp)
-    add_subdirectory(filters/cvfilter_py)
+    #add_subdirectory(filters/cvfilter_py)
     
 endif()
 
