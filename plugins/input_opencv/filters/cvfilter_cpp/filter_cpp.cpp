@@ -76,7 +76,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     Mat calMat;
     calMat = ColorFinder(src);
     Mat can;
-    Canny(calMat,can,50,200,3);
+    Canny(calMat,can,50,150,3);
     dst = can;
     Mat bin;
     cvtColor(can, bin, COLOR_GRAY2BGR);
