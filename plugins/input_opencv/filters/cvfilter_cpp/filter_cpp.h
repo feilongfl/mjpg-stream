@@ -2,8 +2,6 @@
 
 #ifndef FILTER_CPP_H
 #define FILTER_CPP_H
-#include <opencv2/opencv.hpp>
-using namespace cv;
 
 struct HSVRange {
 	int iLowH;
