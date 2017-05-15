@@ -232,7 +232,7 @@ vector<Point> getCorners(Mat src)
 }
 
 //梯形校正
-Mat KeystoneCorrection(Mat src)
+Mat KeystoneCorrection(Mat src,Mat oriSrc)//去除背景图像，原始图像
 {
 	Mat dst;
 	//canny
@@ -258,7 +258,7 @@ Mat KeystoneCorrection(Mat src)
 
 	//梯形矫正
 	Mat transform = findHomography(cornersRect, corners);
-	warpPerspective(src, dst, transform, src.size());
+	warpPerspective(oriSrc, dst, transform, src.size());
 
 	return dst;
 }
@@ -274,7 +274,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 	Mat calMat;
 	calMat = ColorFinder(src); //背景提取
-	dst = KeystoneCorrection(calMat);//梯形校正
+	dst = KeystoneCorrection(calMat, src);//梯形校正
 }
 
 /**
