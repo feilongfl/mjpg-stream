@@ -64,7 +64,7 @@ Mat ColorFinder(Mat src,HSVRange hsvRange = {100,120,0,255,0,255},int elementSiz
         //闭操作 (连接一些连通域)
         morphologyEx(imgThresholded, imgThresholded, MORPH_CLOSE, element);
     }
-    
+
     return imgThresholded;
 }
 
@@ -79,7 +79,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     calMat = ColorFinder(src);
     Mat can;
     Canny(calMat,can,3,9,3);
-    dst = calMat;
+    dst = can;
     Mat bin;
     cvtColor(can, bin, COLOR_GRAY2BGR);
     vector<Vec2f> lines;
