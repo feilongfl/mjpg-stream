@@ -117,7 +117,7 @@ int HorizontalLineRhoAverage(vector<Vec2f> lines)
 lines_s4v DistinguishLines(vector<Vec2f> lines)
 {
 	lines_s4v lineDist;
-	
+
 	for (size_t i = 0; i < lines.size(); i++)
 	{
 		float rho = lines[i][0], theta = lines[i][1];
@@ -247,7 +247,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc)//去除背景图像，原始图像
 
 	//区分上下左右
 	lines_s4v lineDist = DistinguishLines(lines);
-	
+
 	//直线拟合，每个方向留下一根
 	lines_s4 line4 = LineFitting(lineDist);
 	//计算直线交点坐标
@@ -287,9 +287,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	{
 		calMat = ColorFinder(src); //背景提取
 		calMat = KeystoneCorrection(calMat, src);//梯形校正
-		dst = calMat;
 
-		HSVRange hsv = { 100,120,0,150,0,255 };
+		dst = calMat;
+		HSVRange hsv = { 0,180,30,60,254,255 };
 		calMat = ColorFinder(calMat,hsv,5); //背景提取
 
 		vector<vector<cv::Point>> contours;
@@ -297,10 +297,11 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		bitwise_not(calMat, calMat);//反色
 		cv::findContours(calMat, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 
-		for (size_t i = 0; i < contours.size(); i++) 
+		for (size_t i = 0; i < contours.size(); i++)
 		{
+#define whlimit 40
 			cv::Rect r = cv::boundingRect(contours[i]);
-			if (Approximate(r.height, r.width, 30) && r.height > 20 && r.width > 20)
+			if (Approximate(r.height, r.width, 30) && r.height < whlimit && r.width < whlimit)
 				cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
 
@@ -314,12 +315,18 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		cout << "error: " << ex << endl;
 		if(work)//read last
 			dst = LastImg;
+        else
+            dst = src;
 	}
 	catch (cv::Exception ex)
 	{
 		cout << "cvExp: " << ex.what() << endl;
+		if(work)//read last
+			dst = LastImg;
+        else
+            dst = src;
 	}
-	
+
 }
 
 /**
