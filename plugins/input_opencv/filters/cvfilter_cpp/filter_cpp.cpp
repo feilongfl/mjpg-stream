@@ -100,7 +100,11 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         cout << "************************" << endl
              << rho << "," << theta << endl
              << "************************" << endl;
-        line( dst, pt1, pt2, Scalar(0,0,255), 3, CV_AA);
+        if(theta > 1) {
+            line(dst, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
+        } else{
+            line(dst, pt1, pt2, Scalar(0, 255, 255), 3, CV_AA);
+        }
     }
     cout << "################################" << endl;
 
