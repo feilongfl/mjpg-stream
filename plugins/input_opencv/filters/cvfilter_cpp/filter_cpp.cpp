@@ -7,10 +7,11 @@ At the moment, only the input_opencv.so plugin supports filter plugins.
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
-#include "filter_cpp.h"
 
 using namespace cv;
 using namespace std;
+
+#include "filter_cpp.h"
 
 // exports for the filter
 extern "C" {

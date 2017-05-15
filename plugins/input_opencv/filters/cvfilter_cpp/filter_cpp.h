@@ -3,7 +3,6 @@
 #ifndef FILTER_CPP_H
 #define FILTER_CPP_H
 
-
 struct HSVRange {
 	int iLowH;
 	int iHighH;
