@@ -101,6 +101,8 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         Vec2f line;
         float rho;
         float theta;
+        Point pt1;
+        Point pt2;
     };
     vector<lines_s> lineUps,lineDowns,lineLefts,lineRights;
     lines_s lineUp,lineDown,lineLeft,lineRight;
@@ -108,45 +110,49 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     for( size_t i = 0; i < lines.size(); i++ )
     {
         float rho = lines[i][0], theta = lines[i][1];
-        lines_s l = {lines[i],rho,theta};
+        Point pt1, pt2;
+        double a = cos(theta), b = sin(theta);
+        double x0 = a*rho, y0 = b*rho;
+        pt1.x = cvRound(x0 + 1000*(-b));
+        pt1.y = cvRound(y0 + 1000*(a));
+        pt2.x = cvRound(x0 - 1000*(-b));
+        pt2.y = cvRound(y0 - 1000*(a));
+
+        lines_s l = {lines[i],rho,theta,pt1,pt2};
         
         if(theta > CV_PI / 4 && theta < CV_PI * 3 / 4) {
             if(rho > rhoAverageH){//下
                 lineDowns.push_back(l);
-                //cout << "r"<< rho << endl;
-                //line(dst, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
             }
             else//上
             {
-                lineUps.push_back(lines[i]);
-                //cout << "g"<< rho << endl;
-                //line(dst, pt1, pt2, Scalar(0,255 ,0), 3, CV_AA);
+                lineUps.push_back(l);
             }
         }
         else if(theta > CV_PI * 3 / 4 && theta < CV_PI * 5 / 4)//右
         {
-            lineRights.push_back(lines[i]);
-            //line(dst, pt1, pt2, Scalar(255,0, 255), 3, CV_AA);
+            lineRights.push_back(l);
         }
         else//左
         {
-            lineLefts.push_back(lines[i]);
-            //line(dst, pt1, pt2, Scalar(0, 255, 255), 3, CV_AA);
+            lineLefts.push_back(l);
         }
     }
     //cout << "################################" << endl;
 
     //下面，找rho最小
-    //TODO: 注意数组越界！！！
+    //TODO: 注意此处数组越界！！！
     lineDown = lineDowns[0];
     lineUp = lineUps[0];
     lineLeft = lineLefts[0];
     lineRight = lineRights[0];
 
-    for (size_t i = 0;i < lineDown.size();i++)
+    for (size_t i = 0;i < lineDowns.size();i++)
     {
-        lineDown = ()
+        lineDown = (lineDowns[i].rho < lineDown.rho)?
+                   lineDowns[i] : lineDown;
     }
+    line(dst, lineDown.pt1, lineDown.pt2, Scalar(0, 0, 255), 3, CV_AA);
 }
 
 /**
