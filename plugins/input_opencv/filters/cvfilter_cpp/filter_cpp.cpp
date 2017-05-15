@@ -97,6 +97,7 @@ Point CrossPoint(const lines_s *line1, const lines_s *line2)
 //////////////////////////////////////////////////////////////////////////
 //梯形校正
 
+//计算水平直线rho平均值
 int HorizontalLineRhoAverage(vector<Vec2f> lines)
 {
 	int rhoAverageH = 0;
@@ -111,7 +112,7 @@ int HorizontalLineRhoAverage(vector<Vec2f> lines)
 	return rhoAverageH;
 }
 
-
+//直线分类
 lines_s4v DistinguishLines(vector<Vec2f> lines)
 {
 	lines_s4v lineDist;
@@ -153,6 +154,7 @@ lines_s4v DistinguishLines(vector<Vec2f> lines)
 	return lineDist;
 }
 
+//拟合直线
 lines_s4 LineFitting(lines_s4v lineDist)
 {
 	lines_s4 line4;
