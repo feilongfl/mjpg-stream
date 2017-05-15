@@ -159,10 +159,24 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     //上面，找rho最大
     for (size_t i = 0;i < lineUps.size();i++)
     {
-        lineUp = (lineUps[i].rho > lineDown.rho)?
+        lineUp = (lineUps[i].rho > lineUp.rho)?
                    lineUps[i] : lineUp;
     }
     line(dst, lineUp.pt1, lineUp.pt2, Scalar(0, 255, 255), 3, CV_AA);
+    //左面，找rho最大
+    for (size_t i = 0;i < lineLefts.size();i++)
+    {
+        lineLeft = (lineLefts[i].rho > lineDown.rho)?
+                 lineLefts[i] : lineLeft;
+    }
+    line(dst, lineLeft.pt1, lineLeft.pt2, Scalar(0, 255, 255), 3, CV_AA);
+    //右面，找rho最大（rho负数）
+    for (size_t i = 0;i < lineRights.size();i++)
+    {
+        lineRight = (lineRights[i].rho > lineDown.rho)?
+                 lineRights[i] : lineRight;
+    }
+    line(dst, lineRight.pt1, lineRight.pt2, Scalar(0, 255, 255), 3, CV_AA);
 }
 
 /**
