@@ -300,7 +300,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		for (size_t i = 0; i < contours.size(); i++) 
 		{
 			cv::Rect r = cv::boundingRect(contours[i]);
-			if (Approximate(r.height, r.width, 10))
+			if (Approximate(r.height, r.width, 30) && r.height > 20 && r.width > 20)
 				cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
 
