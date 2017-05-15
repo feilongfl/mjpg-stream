@@ -6,6 +6,7 @@
 */
 
 #include "opencv2/opencv.hpp"
+#include <iostream>
 
 using namespace cv;
 using namespace std;
@@ -69,47 +70,20 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     // TODO insert your filter code here
     //dst = src;
     //cvtColor(src,dst,CV_BGR2GRAY);
-<<<<<<< HEAD
-    Mat calcMat,dst_norm_scaled;
-    calcMat = ColorFinder(src);//赛道轮廓识别
-    //cornerHarris(calcMat, dst, 2, 3, 0.01);//搜索赛道角点
-
-    int maxCorners = 4;
-    if( maxCorners < 1 ) { maxCorners = 1; }
-    /// Parameters for Shi-Tomasi algorithm
-    vector<Point2f> corners;
-    double qualityLevel = 0.01;
-    double minDistance = 10;
-    int blockSize = 3;
-    bool useHarrisDetector = false;
-    double k = 0.04;
-    /// Copy the source image
-    //Mat cormat;
-    /// Apply corner detection :Determines strong corners on an image.
-    goodFeaturesToTrack( calcMat,
-                         corners,
-                         maxCorners,
-                         qualityLevel,
-                         minDistance,
-                         Mat(),
-                         blockSize,
-                         useHarrisDetector,
-                         k );
-    /// Draw corners detected
-    for( int i = 0; i < corners.size(); i++ ){
-        circle( dst_norm_scaled,  corners[i], 5,  Scalar(255), 2, 8, 0 );
-        //circle( src, corners[i], 4, Scalar(0,255,0), 2, 8, 0 );
+    Mat calMat;
+    calMat = ColorFinder(src);
+    Mat can;
+    Canny(calMat,can,100,200,3);
+    vector<Vec4i> lines;
+    HoughLinesP(can,lines,1,CV_PI / 80, 50,10);
+    dst = Mat(src.rows,src.cols,src.type());
+    for (size_t i = 0;i < lines.size();i++)
+    {
+        Vec4i l = lines[i];
+        line(dst,Point(l[0],l[1]),Point(l[2],l[3]),Scalar(0));
     }
-    dst = dst_norm_scaled;
-    //////////////////////////////////////////////////////////////////////
-    //TODO:
-    //赛道仿射变换
-    //前景检测
-=======
+    dst = can;
 
-    dst = ColorFinder(src);//赛道提取
-
->>>>>>> 0e0b52614f79853112441a9fd17c10d938d56807
 }
 
 /**
