@@ -153,6 +153,13 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
                    lineDowns[i] : lineDown;
     }
     line(dst, lineDown.pt1, lineDown.pt2, Scalar(0, 0, 255), 3, CV_AA);
+    //上面，找rho最大
+    for (size_t i = 0;i < lineUps.size();i++)
+    {
+        lineUp = (lineUps[i].rho < lineDown.rho)?
+                   lineUps[i] : lineUp;
+    }
+    line(dst, lineUp.pt1, lineUp.pt2, Scalar(0, 0, 255), 3, CV_AA);
 }
 
 /**
