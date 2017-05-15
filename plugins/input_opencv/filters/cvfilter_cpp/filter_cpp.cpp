@@ -294,9 +294,13 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	}
 	catch (char const* ex)
 	{
-		cout << ex << endl;
+		cout << "error: " << ex << endl;
 		if(work)//read last
 			dst = LastImg;
+	}
+	catch (cv::Exception ex)
+	{
+		cout << "cvExp: " << ex.what() << endl;
 	}
 	
 }
