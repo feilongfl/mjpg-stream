@@ -76,8 +76,8 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     Mat can;
     Canny(calMat,can,100,200,3);
 
-    Mat canBgr;
-    cvtColor(calMat, canBgr, COLOR_GRAY2BGR);
+    Mat canBgr(calMat);
+    //cvtColor(calMat, canBgr, COLOR_GRAY2BGR);
     vector<Vec2f> lines;
     HoughLines(canBgr, lines, 1, CV_PI/180, 100, 0, 0 );
 
