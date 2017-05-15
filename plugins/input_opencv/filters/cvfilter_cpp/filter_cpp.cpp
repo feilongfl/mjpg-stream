@@ -39,7 +39,7 @@ struct HSVRange{
     int iHighV;
 };
 
-Mat ColorFinder(Mat src,HSVRange hsvRange = {100,124,0,255,0,255})
+Mat ColorFinder(Mat src,HSVRange hsvRange = {100,120,0,255,0,255})
 {
     Mat imgHSV;
     vector<Mat> hsvSplit;
