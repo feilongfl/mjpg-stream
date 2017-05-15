@@ -241,7 +241,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     cornersIn[2] = Point(0,dst.rows-1);
     cornersIn[3] = Point(dst.cols-1,dst.rows-1);
 
-    Mat transform = findHomography(cornersIn,corners);
+    Mat transform = getPerspectiveTransform(cornersIn,corners);
     dst.release();
     warpPerspective(src,dst, transform,src.size());
 
