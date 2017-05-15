@@ -235,13 +235,13 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     corners[2] = Point(0,dst.rows-1);
     corners[3] = Point(dst.cols-1,dst.rows-1);
 
-    vector<Point> cornersIn(4);//目标
-    cornersIn[0] = Point(0,0);
-    cornersIn[1] = Point(dst.cols-1,0);
-    cornersIn[2] = Point(0,dst.rows-1);
-    cornersIn[3] = Point(dst.cols-1,dst.rows-1);
+    vector<Point> cornersIn(4);//输入
+    cornersIn[0] = crossUL;
+    cornersIn[1] = crossUR;
+    cornersIn[2] = crossDL;
+    cornersIn[3] = crossDR;
 
-    Mat transform = getPerspectiveTransform(cornersIn,corners);
+    Mat transform = findHomography(cornersIn,corners);
     dst.release();
     warpPerspective(src,dst, transform,src.size());
 
