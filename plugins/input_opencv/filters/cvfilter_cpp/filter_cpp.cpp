@@ -248,24 +248,17 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc)//去除背景图像，原始图像
 	//区分上下左右
 	lines_s4v lineDist = DistinguishLines(lines);
 	
-	try
-	{
-		//直线拟合，每个方向留下一根
-		lines_s4 line4 = LineFitting(lineDist);
-		//计算直线交点坐标
-		vector<Point> cornersRect = RectCrossCalc(line4);
+	//直线拟合，每个方向留下一根
+	lines_s4 line4 = LineFitting(lineDist);
+	//计算直线交点坐标
+	vector<Point> cornersRect = RectCrossCalc(line4);
 
-		//准备标准矩形
-		vector<Point> corners = getCorners(src);
+	//准备标准矩形
+	vector<Point> corners = getCorners(src);
 
-		//梯形矫正
-		Mat transform = findHomography(cornersRect, corners);
-		warpPerspective(oriSrc, dst, transform, src.size());
-	}
-	catch (const std::exception&)
-	{
-		throw "计算失败！";
-	}
+	//梯形矫正
+	Mat transform = findHomography(cornersRect, corners);
+	warpPerspective(oriSrc, dst, transform, src.size());
 
 	return dst;
 }
