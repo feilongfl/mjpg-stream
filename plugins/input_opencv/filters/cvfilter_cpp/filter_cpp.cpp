@@ -167,8 +167,7 @@ lines_s4 LineFitting(lines_s4v lineDist)
 	{
 		//TODO: do sth here
 		// example: throw ex
-		std::exception ex("直线数量为零！");
-		throw ex;
+		throw "直线数量为零！";
 	};
 
 	line4.lineDown = lineDist.lineDowns[0];
@@ -265,8 +264,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc)//去除背景图像，原始图像
 	}
 	catch (const std::exception&)
 	{
-		std::exception ex("计算失败！");
-		throw ex;
+		throw "计算失败！";
 	}
 
 	return dst;
