@@ -76,7 +76,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     Mat can;
     Canny(calMat,can,100,200,3);
     vector<Vec4i> lines;
-    HoughLines(can,lines,1,CV_PI / 80, 50,10);
+    Mat bin;
+    cvtColor(can,bin,COLOR_GRAY2BGR);
+    HoughLines(bin,lines,1,CV_PI / 80, 50,10);
     dst = Mat(src.rows,src.cols,src.type());
     for (size_t i = 0;i < lines.size();i++)
     {
