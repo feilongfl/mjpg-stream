@@ -279,9 +279,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		calMat = ColorFinder(src); //背景提取
 		dst = KeystoneCorrection(calMat, src);//梯形校正
 	}
-	catch (const std::exception& ex)
+	catch (char const* ex)
 	{
-		cout << ex.what() << endl;
+		cout << ex << endl;
 	}
 	
 }
