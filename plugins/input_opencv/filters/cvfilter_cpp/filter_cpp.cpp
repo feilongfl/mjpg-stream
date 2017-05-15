@@ -238,8 +238,8 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc)//去除背景图像，原始图像
 	Mat dst;
 	//canny
 	Mat can;
-	Canny(src, can, 3, 9, 3);
-
+	//Canny(src, can, 3, 9, 3);
+    cvtColor(src,can,COLOR_BGR2GRAY);
 	//Mat canBgr;
 	//cvtColor(can, canBgr, COLOR_GRAY2BGR);
 	vector<Vec2f> lines;
