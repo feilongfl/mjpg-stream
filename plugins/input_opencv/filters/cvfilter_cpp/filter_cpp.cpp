@@ -270,6 +270,12 @@ Called by the OpenCV plugin upon each frame
 Mat LastImg;
 bool work = false;
 
+//近似
+bool Approximate(int num1, int num2, int error)
+{
+	return (abs(num1 - num2) < error);
+}
+
 void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	// TODO insert your filter code here
 
@@ -294,7 +300,8 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		for (size_t i = 0; i < contours.size(); i++) 
 		{
 			cv::Rect r = cv::boundingRect(contours[i]);
-			cv::rectangle(dst, r, cv::Scalar(0,0,255));
+			if (Approximate(r.height, r.width, 10))
+				cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
 
 		//////////////////////////////////////////////////////////////////////////
