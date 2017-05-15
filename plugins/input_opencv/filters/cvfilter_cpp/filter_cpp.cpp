@@ -230,6 +230,22 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     circle(dst,crossDL,10, Scalar(0, 0, 0),3);
     circle(dst,crossDR,10, Scalar(0, 0, 0),3);
 
+    //梯形矫正
+    vector<Point> corners(4);//目标
+    corners[0] = Point(0,0);
+    corners[1] = Point(dst.cols-1,0);
+    corners[2] = Point(0,dst.rows-1);
+    corners[3] = Point(dst.cols-1,dst.rows-1);
+
+    vector<Point> cornersIn(4);//目标
+    cornersIn[0] = Point(0,0);
+    cornersIn[1] = Point(dst.cols-1,0);
+    cornersIn[2] = Point(0,dst.rows-1);
+    cornersIn[3] = Point(dst.cols-1,dst.rows-1);
+
+    Mat transform = findHomography(cornersIn,corners);
+    warpPerspective(src,dst, transform,src.size());
+
 }
 
 /**
