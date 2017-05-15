@@ -132,10 +132,12 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         else if(theta > CV_PI * 3 / 4 && theta < CV_PI * 5 / 4)//右
         {
             lineRights.push_back(l);
+            cout << "r: " << l.rho << endl;
         }
         else//左
         {
             lineLefts.push_back(l);
+            cout << "l: " << l.rho << endl;
         }
     }
     //cout << "################################" << endl;
