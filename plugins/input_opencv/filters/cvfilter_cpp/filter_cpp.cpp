@@ -24,6 +24,7 @@ void filter_free(void* filter_ctx);
     filter_process function, and should be freed by the filter_free function
 */
 bool filter_init(const char * args, void** filter_ctx) {
+    cout << "init filter!" << endl;
     return true;
 }
 
@@ -80,9 +81,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     for (size_t i = 0;i < lines.size();i++)
     {
         Vec4i l = lines[i];
-        line(dst,Point(l[0],l[1]),Point(l[2],l[3]),Scalar(0));
+        line(dst,Point(l[0],l[1]),Point(l[2],l[3]),Scalar(255));
     }
-    dst = can;
+    //dst = can;
 
 }
 
@@ -91,5 +92,6 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 */
 void filter_free(void* filter_ctx) {
     // empty
+    cout << "free filter!" << endl;
 }
 
