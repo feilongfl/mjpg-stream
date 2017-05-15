@@ -196,38 +196,38 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         lineDown = (lineDowns[i].rho < lineDown.rho)?
                    lineDowns[i] : lineDown;
     }
-    line(trans, lineDown.pt1, lineDown.pt2, Scalar(0, 0, 255), 3, CV_AA);
+    //line(trans, lineDown.pt1, lineDown.pt2, Scalar(0, 0, 255), 3, CV_AA);
     //上面，找rho最大
     for (size_t i = 0;i < lineUps.size();i++)
     {
         lineUp = (lineUps[i].rho > lineUp.rho)?
                    lineUps[i] : lineUp;
     }
-    line(trans, lineUp.pt1, lineUp.pt2, Scalar(0, 255, 255), 3, CV_AA);
+    //line(trans, lineUp.pt1, lineUp.pt2, Scalar(0, 255, 255), 3, CV_AA);
     //左面，找rho最大
     for (size_t i = 0;i < lineLefts.size();i++)
     {
         lineLeft = (lineLefts[i].rho > lineDown.rho)?
                  lineLefts[i] : lineLeft;
     }
-    line(trans, lineLeft.pt1, lineLeft.pt2, Scalar(0, 255, 0), 3, CV_AA);
+    //line(trans, lineLeft.pt1, lineLeft.pt2, Scalar(0, 255, 0), 3, CV_AA);
     //右面，找rho最大（rho负数）
     for (size_t i = 0;i < lineRights.size();i++)
     {
         lineRight = (lineRights[i].rho < lineDown.rho)?
                  lineRights[i] : lineRight;
     }
-    line(trans, lineRight.pt1, lineRight.pt2, Scalar(255, 255, 0), 3, CV_AA);
+    //line(trans, lineRight.pt1, lineRight.pt2, Scalar(255, 255, 0), 3, CV_AA);
 
     //计算直线交点坐标
     Point crossUL = CrossPoint(&lineLeft, &lineUp);
     Point crossUR = CrossPoint(&lineRight, &lineUp);
     Point crossDL = CrossPoint(&lineLeft, &lineDown);
     Point crossDR = CrossPoint(&lineRight, &lineDown);
-    circle(trans,crossUL,10, Scalar(0, 0, 0),3);
-    circle(trans,crossUR,10, Scalar(0, 0, 0),3);
-    circle(trans,crossDL,10, Scalar(0, 0, 0),3);
-    circle(trans,crossDR,10, Scalar(0, 0, 0),3);
+    //circle(trans,crossUL,10, Scalar(0, 0, 0),3);
+    //circle(trans,crossUR,10, Scalar(0, 0, 0),3);
+    //circle(trans,crossDL,10, Scalar(0, 0, 0),3);
+    //circle(trans,crossDR,10, Scalar(0, 0, 0),3);
 
     //梯形矫正
     vector<Point> corners(4);//目标
