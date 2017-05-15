@@ -21,5 +21,13 @@ struct lines_s {
 	Point pt2;
 };
 
+struct lines_s4 {
+	lines_s lineUp, lineDown, lineLeft, lineRight;
+};
+
+struct lines_s4v {
+	vector<lines_s> lineUps, lineDowns, lineLefts, lineRights;
+};
+
 
 #endif//FILTER_CPP_H

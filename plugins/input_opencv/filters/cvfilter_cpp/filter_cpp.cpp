@@ -111,13 +111,6 @@ int HorizontalLineRhoAverage(vector<Vec2f> lines)
 	return rhoAverageH;
 }
 
-struct lines_s4 {
-	lines_s lineUp, lineDown, lineLeft, lineRight;
-};
-
-struct lines_s4v {
-	vector<lines_s> lineUps, lineDowns, lineLefts, lineRights;
-};
 
 lines_s4v DistinguishLines(vector<Vec2f> lines)
 {
@@ -170,6 +163,7 @@ lines_s4 LineFitting(lines_s4v lineDist)
 		lineDist.lineLefts.size() == 0)
 	{
 		//TODO: do sth here
+		// example: assert
 	};
 
 	line4.lineDown = lineDist.lineDowns[0];
@@ -234,6 +228,7 @@ vector<Point> getCorners(Mat src)
 	return corners;
 }
 
+//梯形校正
 Mat KeystoneCorrection(Mat src)
 {
 	Mat dst;
@@ -264,6 +259,7 @@ Mat KeystoneCorrection(Mat src)
 
 	return dst;
 }
+//////////////////////////////////////////////////////////////////////////
 
 /**
 Called by the OpenCV plugin upon each frame
