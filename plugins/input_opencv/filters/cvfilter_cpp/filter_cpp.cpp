@@ -39,7 +39,7 @@ struct HSVRange{
     int iHighV;
 };
 
-Mat ColorFinder(Mat src,HSVRange hsvRange = {100,120,0,255,0,255})
+Mat ColorFinder(Mat src,HSVRange hsvRange = {100,120,0,255,0,255},int elementSize = 0)
 {
     Mat imgHSV;
     vector<Mat> hsvSplit;
@@ -56,13 +56,15 @@ Mat ColorFinder(Mat src,HSVRange hsvRange = {100,120,0,255,0,255})
     inRange(imgHSV, Scalar(hsvRange.iLowH, hsvRange.iLowS, hsvRange.iLowV),
             Scalar(hsvRange.iHighH, hsvRange.iHighS, hsvRange.iHighV), imgThresholded);
 
-    //开操作 (去除一些噪点)
-    Mat element = getStructuringElement(MORPH_RECT, Size(5, 5));
-    morphologyEx(imgThresholded, imgThresholded, MORPH_OPEN, element);
+    if (elementSize != 0) {
+        //开操作 (去除一些噪点)
+        Mat element = getStructuringElement(MORPH_RECT, Size(elementSize, elementSize));
+        morphologyEx(imgThresholded, imgThresholded, MORPH_OPEN, element);
 
-    //闭操作 (连接一些连通域)
-    morphologyEx(imgThresholded, imgThresholded, MORPH_CLOSE, element);
-
+        //闭操作 (连接一些连通域)
+        morphologyEx(imgThresholded, imgThresholded, MORPH_CLOSE, element);
+    }
+    
     return imgThresholded;
 }
 
