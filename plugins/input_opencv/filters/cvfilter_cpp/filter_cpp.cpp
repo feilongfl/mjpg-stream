@@ -84,54 +84,69 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     cvtColor(can, bin, COLOR_GRAY2BGR);
     vector<Vec2f> lines;
     HoughLines(can, lines, 1, CV_PI/180, 100, 0, 0 );
-    vector<Vec2f> line4;
 
-
-    int rhosum=0;
+    int rhoAverageH=0;
     for( size_t i = 0; i < lines.size(); i++ )
     {
         float theta = lines[i][1];
         if(theta > CV_PI / 4 && theta < CV_PI * 3 / 4) {
-            rhosum += lines[i][0];
+            rhoAverageH += lines[i][0];
         }
     }
-    rhosum /= lines.size();
+    rhoAverageH /= lines.size();
+
+
 //    cout << "################################" << endl;
+    struct lines_s {
+        Vec2f line;
+        float rho;
+        float theta;
+    };
+    vector<lines_s> lineUps,lineDowns,lineLefts,lineRights;
+    lines_s lineUp,lineDown,lineLeft,lineRight;
+    //区分上下左右
     for( size_t i = 0; i < lines.size(); i++ )
     {
         float rho = lines[i][0], theta = lines[i][1];
-        Point pt1, pt2;
-        double a = cos(theta), b = sin(theta);
-        double x0 = a*rho, y0 = b*rho;
-        pt1.x = cvRound(x0 + 1000*(-b));
-        pt1.y = cvRound(y0 + 1000*(a));
-        pt2.x = cvRound(x0 - 1000*(-b));
-        pt2.y = cvRound(y0 - 1000*(a));
-        //cout << "************************" << endl
-        //     << rho << "," << theta << endl
-        //     << "************************" << endl;
+        lines_s l = {lines[i],rho,theta};
+        
         if(theta > CV_PI / 4 && theta < CV_PI * 3 / 4) {
-            if(rho > rhosum){
-                cout << "r"<< rho << endl;
-                line(dst, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
+            if(rho > rhoAverageH){//下
+                lineDowns.push_back(l);
+                //cout << "r"<< rho << endl;
+                //line(dst, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
             }
-            else
+            else//上
             {
-                cout << "g"<< rho << endl;
-                line(dst, pt1, pt2, Scalar(0,255 ,0), 3, CV_AA);
+                lineUps.push_back(lines[i]);
+                //cout << "g"<< rho << endl;
+                //line(dst, pt1, pt2, Scalar(0,255 ,0), 3, CV_AA);
             }
         }
-        else if(theta > CV_PI * 3 / 4 && theta < CV_PI * 5 / 4)
+        else if(theta > CV_PI * 3 / 4 && theta < CV_PI * 5 / 4)//右
         {
-            line(dst, pt1, pt2, Scalar(255,0, 255), 3, CV_AA);
+            lineRights.push_back(lines[i]);
+            //line(dst, pt1, pt2, Scalar(255,0, 255), 3, CV_AA);
         }
-        else
+        else//左
         {
-            line(dst, pt1, pt2, Scalar(0, 255, 255), 3, CV_AA);
+            lineLefts.push_back(lines[i]);
+            //line(dst, pt1, pt2, Scalar(0, 255, 255), 3, CV_AA);
         }
     }
     //cout << "################################" << endl;
 
+    //下面，找rho最小
+    //TODO: 注意数组越界！！！
+    lineDown = lineDowns[0];
+    lineUp = lineUps[0];
+    lineLeft = lineLefts[0];
+    lineRight = lineRights[0];
+
+    for (size_t i = 0;i < lineDown.size();i++)
+    {
+        lineDown = ()
+    }
 }
 
 /**
