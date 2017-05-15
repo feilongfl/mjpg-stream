@@ -147,6 +147,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     lineLeft = lineLefts[0];
     lineRight = lineRights[0];
 
+    //TODO: 更换直线拟合算法
     for (size_t i = 0;i < lineDowns.size();i++)
     {
         lineDown = (lineDowns[i].rho < lineDown.rho)?
@@ -159,7 +160,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         lineUp = (lineUps[i].rho < lineDown.rho)?
                    lineUps[i] : lineUp;
     }
-    line(dst, lineUp.pt1, lineUp.pt2, Scalar(0, 0, 255), 3, CV_AA);
+    line(dst, lineUp.pt1, lineUp.pt2, Scalar(0, 255, 255), 3, CV_AA);
 }
 
 /**
