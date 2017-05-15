@@ -293,7 +293,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		for (size_t i = 0; i < contours.size(); i++) 
 		{
 			cv::Rect r = cv::boundingRect(contours[i]);
-			cv::rectangle(dst, r, cv::Scalar(255));
+			cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
 
 		//////////////////////////////////////////////////////////////////////////
