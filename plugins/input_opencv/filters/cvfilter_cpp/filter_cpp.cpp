@@ -24,7 +24,9 @@ void filter_free(void* filter_ctx);
     filter_process function, and should be freed by the filter_free function
 */
 bool filter_init(const char * args, void** filter_ctx) {
-    cout << "init filter!" << endl;
+    cout << "############################" << endl
+         << "##      init filter!      ##" << endl
+         << "############################" << endl;
     return true;
 }
 
@@ -102,6 +104,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 */
 void filter_free(void* filter_ctx) {
     // empty
-    cout << "free filter!" << endl;
+    cout << "############################" << endl
+         << "##      free filter!      ##" << endl
+         << "############################" << endl;
+
 }
 
