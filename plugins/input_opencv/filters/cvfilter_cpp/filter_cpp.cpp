@@ -281,13 +281,22 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	{
 		calMat = ColorFinder(src); //背景提取
 		calMat = KeystoneCorrection(calMat, src);//梯形校正
+		dst = calMat;
+
 		HSVRange hsv = { 100,120,0,255,0,255 };
-		dst = ColorFinder(calMat,hsv,5); //背景提取
+		calMat = ColorFinder(calMat,hsv,5); //背景提取
 
+		vector<vector<cv::Point>> contours;
+		//连通域
+		cv::findContours(calMat, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 
+		for (size_t i = 0; i < contours.size(); i++) 
+		{
+			cv::Rect r = cv::boundingRect(contours[i]);
+			cv::rectangle(dst, r, cv::Scalar(255));
+		}
 
-
-
+		//////////////////////////////////////////////////////////////////////////
 		//save last
 		LastImg = dst;
 		work = true;
