@@ -230,7 +230,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     line2.pStart = lineUp.pt1;
     line2.pEnd = lineUp.pt2;
     Point cross = CrossPoint(&line1, &line2);
-    circle(dst,cross,5, Scalar(255,255,0));
+    circle(dst,cross,5, Scalar(0, 0, 255));
 }
 
 /**
