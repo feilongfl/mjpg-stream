@@ -121,7 +121,8 @@ Point CrossPoint(const lines_s *line1, const lines_s *line2)
 */
 void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     // TODO insert your filter code here
-    trans = src;
+
+    Mat trans = src;
     //cvtColor(src,dst,CV_BGR2GRAY);
     Mat calMat;
     calMat = ColorFinder(src);
