@@ -280,14 +280,21 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	try
 	{
 		calMat = ColorFinder(src); //背景提取
-		dst = KeystoneCorrection(calMat, src);//梯形校正
+		calMat = KeystoneCorrection(calMat, src);//梯形校正
+		dst = ColorFinder(calMat); //背景提取
+
+
+
+
+
+		//save last
 		LastImg = dst;
 		work = true;
 	}
 	catch (char const* ex)
 	{
 		cout << ex << endl;
-		if(work)
+		if(work)//read last
 			dst = LastImg;
 	}
 	
