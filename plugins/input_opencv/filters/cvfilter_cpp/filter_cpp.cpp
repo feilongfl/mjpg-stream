@@ -157,7 +157,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     //上面，找rho最大
     for (size_t i = 0;i < lineUps.size();i++)
     {
-        lineUp = (lineUps[i].rho < lineDown.rho)?
+        lineUp = (lineUps[i].rho > lineDown.rho)?
                    lineUps[i] : lineUp;
     }
     line(dst, lineUp.pt1, lineUp.pt2, Scalar(0, 255, 255), 3, CV_AA);
