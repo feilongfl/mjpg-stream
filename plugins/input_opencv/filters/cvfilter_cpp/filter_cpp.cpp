@@ -14,7 +14,7 @@ using namespace std;
 // exports for the filter
 extern "C" {
 bool filter_init(const char * args, void** filter_ctx);
-void filter_process(void* filter_ctx, Mat &src, Mat &dst);
+void filter_process(void* filter_ctx, Mat &src, Mat &trans);
 void filter_free(void* filter_ctx);
 }
 
@@ -121,7 +121,7 @@ Point CrossPoint(const lines_s *line1, const lines_s *line2)
 */
 void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     // TODO insert your filter code here
-    dst = src;
+    trans = src;
     //cvtColor(src,dst,CV_BGR2GRAY);
     Mat calMat;
     calMat = ColorFinder(src);
@@ -195,45 +195,45 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         lineDown = (lineDowns[i].rho < lineDown.rho)?
                    lineDowns[i] : lineDown;
     }
-    line(dst, lineDown.pt1, lineDown.pt2, Scalar(0, 0, 255), 3, CV_AA);
+    line(trans, lineDown.pt1, lineDown.pt2, Scalar(0, 0, 255), 3, CV_AA);
     //上面，找rho最大
     for (size_t i = 0;i < lineUps.size();i++)
     {
         lineUp = (lineUps[i].rho > lineUp.rho)?
                    lineUps[i] : lineUp;
     }
-    line(dst, lineUp.pt1, lineUp.pt2, Scalar(0, 255, 255), 3, CV_AA);
+    line(trans, lineUp.pt1, lineUp.pt2, Scalar(0, 255, 255), 3, CV_AA);
     //左面，找rho最大
     for (size_t i = 0;i < lineLefts.size();i++)
     {
         lineLeft = (lineLefts[i].rho > lineDown.rho)?
                  lineLefts[i] : lineLeft;
     }
-    line(dst, lineLeft.pt1, lineLeft.pt2, Scalar(0, 255, 0), 3, CV_AA);
+    line(trans, lineLeft.pt1, lineLeft.pt2, Scalar(0, 255, 0), 3, CV_AA);
     //右面，找rho最大（rho负数）
     for (size_t i = 0;i < lineRights.size();i++)
     {
         lineRight = (lineRights[i].rho < lineDown.rho)?
                  lineRights[i] : lineRight;
     }
-    line(dst, lineRight.pt1, lineRight.pt2, Scalar(255, 255, 0), 3, CV_AA);
+    line(trans, lineRight.pt1, lineRight.pt2, Scalar(255, 255, 0), 3, CV_AA);
 
     //计算直线交点坐标
     Point crossUL = CrossPoint(&lineLeft, &lineUp);
     Point crossUR = CrossPoint(&lineRight, &lineUp);
     Point crossDL = CrossPoint(&lineLeft, &lineDown);
     Point crossDR = CrossPoint(&lineRight, &lineDown);
-    circle(dst,crossUL,10, Scalar(0, 0, 0),3);
-    circle(dst,crossUR,10, Scalar(0, 0, 0),3);
-    circle(dst,crossDL,10, Scalar(0, 0, 0),3);
-    circle(dst,crossDR,10, Scalar(0, 0, 0),3);
+    circle(trans,crossUL,10, Scalar(0, 0, 0),3);
+    circle(trans,crossUR,10, Scalar(0, 0, 0),3);
+    circle(trans,crossDL,10, Scalar(0, 0, 0),3);
+    circle(trans,crossDR,10, Scalar(0, 0, 0),3);
 
     //梯形矫正
     vector<Point> corners(4);//目标
     corners[0] = Point(0,0);
-    corners[1] = Point(dst.cols-1,0);
-    corners[2] = Point(0,dst.rows-1);
-    corners[3] = Point(dst.cols-1,dst.rows-1);
+    corners[1] = Point(trans.cols-1,0);
+    corners[2] = Point(0,trans.rows-1);
+    corners[3] = Point(trans.cols-1,trans.rows-1);
 
     vector<Point> cornersIn(4);//输入
     cornersIn[0] = crossUL;
@@ -242,7 +242,6 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     cornersIn[3] = crossDR;
 
     Mat transform = findHomography(cornersIn,corners);
-    dst.release();
     warpPerspective(src,dst, transform,src.size());
 
 }
