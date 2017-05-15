@@ -289,7 +289,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		calMat = KeystoneCorrection(calMat, src);//梯形校正
 		dst = calMat;
 
-		HSVRange hsv = { 100,120,100,255,0,255 };
+		HSVRange hsv = { 100,120,0,150,0,255 };
 		calMat = ColorFinder(calMat,hsv,5); //背景提取
 
 		vector<vector<cv::Point>> contours;
