@@ -13,9 +13,9 @@ using namespace std;
 
 // exports for the filter
 extern "C" {
-    bool filter_init(const char * args, void** filter_ctx);
-    void filter_process(void* filter_ctx, Mat &src, Mat &dst);
-    void filter_free(void* filter_ctx);
+bool filter_init(const char * args, void** filter_ctx);
+void filter_process(void* filter_ctx, Mat &src, Mat &dst);
+void filter_free(void* filter_ctx);
 }
 
 
@@ -75,7 +75,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     Mat can;
     Canny(calMat,can,100,200,3);
     vector<Vec4i> lines;
-    HoughLinesP(can,lines,1,CV_PI / 80, 50,10);
+    HoughLines(can,lines,1,CV_PI / 80, 50,10);
     dst = Mat(src.rows,src.cols,src.type());
     for (size_t i = 0;i < lines.size();i++)
     {
