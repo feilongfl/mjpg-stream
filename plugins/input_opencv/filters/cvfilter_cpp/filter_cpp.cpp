@@ -84,7 +84,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     cvtColor(can, bin, COLOR_GRAY2BGR);
     vector<Vec2f> lines;
     HoughLines(can, lines, 1, CV_PI/180, 100, 0, 0 );
+    vector<Vec2f> line4;
 
+    cout << "################################" << endl;
     for( size_t i = 0; i < lines.size(); i++ )
     {
         float rho = lines[i][0], theta = lines[i][1];
@@ -95,9 +97,12 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         pt1.y = cvRound(y0 + 1000*(a));
         pt2.x = cvRound(x0 - 1000*(-b));
         pt2.y = cvRound(y0 - 1000*(a));
+        cout << "************************" << endl
+             << rho << "," << theta << endl
+             << "************************" << endl;
         line( dst, pt1, pt2, Scalar(0,0,255), 3, CV_AA);
     }
-
+    cout << "################################" << endl;
 
 }
 
