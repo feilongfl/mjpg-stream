@@ -73,13 +73,13 @@ Mat ColorFinder(Mat src,HSVRange hsvRange = {100,120,0,255,0,255},int elementSiz
 */
 void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
     // TODO insert your filter code here
-    //dst = src;
+    dst = src;
     //cvtColor(src,dst,CV_BGR2GRAY);
     Mat calMat;
     calMat = ColorFinder(src);
     Mat can;
     Canny(calMat,can,3,9,3);
-    dst = can;
+    //dst = can;
     Mat bin;
     cvtColor(can, bin, COLOR_GRAY2BGR);
     vector<Vec2f> lines;
@@ -95,7 +95,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         pt1.y = cvRound(y0 + 1000*(a));
         pt2.x = cvRound(x0 - 1000*(-b));
         pt2.y = cvRound(y0 - 1000*(a));
-        //line( dst, pt1, pt2, Scalar(0,0,255), 3, CV_AA);
+        line( dst, pt1, pt2, Scalar(0,0,255), 3, CV_AA);
     }
 
 
