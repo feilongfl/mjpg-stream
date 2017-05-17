@@ -165,8 +165,6 @@ lines_s4 LineFitting(lines_s4v lineDist)
 		lineDist.lineRights.size() == 0 ||
 		lineDist.lineLefts.size() == 0)
 	{
-		//TODO: do sth here
-		// example: throw ex
 		throw "直线数量为零！";
 	};
 
