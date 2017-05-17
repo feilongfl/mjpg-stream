@@ -295,7 +295,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 	try
 	{
-        HSVRange hsvR = {80,140,0,255,0,255};
+        HSVRange hsvR = {80,140,0,200,0,255};
 		calMat = ColorFinder(src,hsvR); //背景提取
         dst = calMat;
         return;
