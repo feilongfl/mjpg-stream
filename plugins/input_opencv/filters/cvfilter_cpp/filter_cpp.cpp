@@ -297,8 +297,8 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	{
         HSVRange hsvR = {80,140,0,200,0,255};
 		calMat = ColorFinder(src,hsvR); //背景提取
-        dst = calMat;
-        return;
+        /*dst = calMat;
+        return;*/
 		calMat = KeystoneCorrection(calMat, src,true);//梯形校正
 
 		dst = calMat;
