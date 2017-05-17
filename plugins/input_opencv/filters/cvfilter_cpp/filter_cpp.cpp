@@ -301,16 +301,15 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         HSVRange hsvR = {80,140,0,200,0,255};
 		calMat = ColorFinder(src,hsvR); //背景提取
 
-		calMat = KeystoneCorrection(calMat, src,true);//梯形校正
+		calMat = KeystoneCorrection(calMat, src);//梯形校正
 
-		dst = calMat;
-        return;
-		HSVRange hsv = { 0,180,30,60,254,255 };
-		calMat = ColorFinder(calMat,hsv,5); //背景提取
+        /*
+		//HSVRange hsv = { 0,180,30,60,254,255 };
+		//calMat = ColorFinder(calMat,hsv,5); //背景提取
 
-		vector<vector<cv::Point>> contours;
+		//vector<vector<cv::Point>> contours;
 		//连通域
-		bitwise_not(calMat, calMat);//反色
+		//bitwise_not(calMat, calMat);//反色
 		cv::findContours(calMat, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 
 		for (size_t i = 0; i < contours.size(); i++)
@@ -320,7 +319,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 			if (Approximate(r.height, r.width, 30) && r.height < whlimit && r.width < whlimit)
 				cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
-
+*/
 		//////////////////////////////////////////////////////////////////////////
 		//save last
 		LastImg = dst;
