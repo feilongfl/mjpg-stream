@@ -312,6 +312,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		bitwise_not(calMat, calMat);//反色
 		cv::findContours(calMat, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 
+        if (contours.size()<=2)
+            throw "error:区域数量过少";
+
 		for (size_t i = 0; i < contours.size(); i++)
 		{
             //for test
