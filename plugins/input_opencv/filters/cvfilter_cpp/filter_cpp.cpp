@@ -314,11 +314,24 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 		for (size_t i = 0; i < contours.size(); i++)
 		{
-#define whlimit 40
+#define whlimit1 40
+#define whlimit2 80
 			cv::Rect r = cv::boundingRect(contours[i]);
             cout << r.x << "," << r.y << "," << r.height << "," << r.width << endl;
-			if (Approximate(r.height, r.width, 30) && r.height < whlimit && r.width < whlimit)
-				cv::rectangle(dst, r, cv::Scalar(0,0,255));
+			if (Approximate(r.height, r.width, 30)
+                && r.x != 0 && r.y != 0) {
+                if(r.height < whlimit1 && r.width < whlimit1) {
+                    cv::rectangle(dst, r, cv::Scalar(0, 0, 255),5);
+                }
+                else if(r.height < whlimit2 && r.width < whlimit2) //亮起
+                {
+                    cv::rectangle(dst, r, cv::Scalar(0, 255, 0),5);
+                }
+                else
+                {
+                    cv::rectangle(dst, r, cv::Scalar(0, 255, 255),5);
+                }
+            }
 		}
         cout << "####################" << endl;
         //dst = calMat;
