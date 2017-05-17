@@ -308,17 +308,17 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 		calMat = ColorFinder(calMat,hsvR,5); //背景提取
 
-        /*
-		//vector<vector<cv::Point>> contours;
+
+		vector<vector<cv::Point>> contours;
 		//连通域
-		//bitwise_not(calMat, calMat);//反色
+		bitwise_not(calMat, calMat);//反色
 		cv::findContours(calMat, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 
 		for (size_t i = 0; i < contours.size(); i++)
 		{
-#define whlimit 40
+#define whlimit 20
 			cv::Rect r = cv::boundingRect(contours[i]);
-			if (Approximate(r.height, r.width, 30) && r.height < whlimit && r.width < whlimit)
+			if (Approximate(r.height, r.width, 10) && r.height < whlimit && r.width < whlimit)
 				cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
 */
