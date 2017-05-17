@@ -321,17 +321,20 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
                 && r.x != 0 && r.y != 0
                 && r.x + r.width < 640 && r.y + r.height < 480
                     ) {
-                cout << r.x << "," << r.y << "," << r.height << "," << r.width << endl;
+                cout << r.x << "," << r.y << "," << r.height << "," << r.width << ",";
                 if(r.height < whlimit1 && r.width < whlimit1) {
                     cv::rectangle(dst, r, cv::Scalar(0, 0, 255),5);
+                    cout << "r" << endl;
                 }
                 else if(r.height < whlimit2 && r.width < whlimit2) //亮起
                 {
                     cv::rectangle(dst, r, cv::Scalar(0, 255, 0),5);
+                    cout << "g" << endl;
                 }
                 else
                 {
                     cv::rectangle(dst, r, cv::Scalar(0, 255, 255),5);
+                    cout << "y" << endl;
                 }
             }
 		}
