@@ -300,7 +300,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         /*dst = calMat;
         return;*/
         Mat calMat2;
-        cout << calMat.type(); << endl;
+        cout << calMat.type() << endl;
         //cvtColor(calMat,calMat2,COLOR_GRAY2BGR);
 		calMat = KeystoneCorrection(calMat, src,true);//梯形校正
 
