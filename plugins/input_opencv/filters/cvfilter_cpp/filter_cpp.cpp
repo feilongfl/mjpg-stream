@@ -258,13 +258,14 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 
 	//准备标准矩形
 	vector<Point> corners = getCorners(src);
+
 	//梯形矫正
 	Mat transform = findHomography(cornersRect, corners);
     if(!debug)
 	    warpPerspective(oriSrc, dst, transform, src.size());
     else
     {
-        dst = src;
+        dst = oriSrc;
         line(dst,line4.lineUp.pt1,line4.lineUp.pt2,Scalar(0,0,255));
         line(dst,line4.lineDown.pt1,line4.lineDown.pt2,Scalar(0,0,255));
         line(dst,line4.lineLeft.pt1,line4.lineLeft.pt2,Scalar(0,0,255));
