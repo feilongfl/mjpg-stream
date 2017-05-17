@@ -321,7 +321,6 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 			if (Approximate(r.height, r.width, 10) && r.height < whlimit && r.width < whlimit)
 				cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
-*/
         dst = calMat;
 		//////////////////////////////////////////////////////////////////////////
 		//save last
