@@ -318,12 +318,14 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		for (size_t i = 0; i < contours.size(); i++)
 		{
             //for test
+#define whlimit0 15
 #define whlimit1 26
 #define whlimit2 80
 			cv::Rect r = cv::boundingRect(contours[i]);
 			if (Approximate(r.height, r.width, 40)
                 && r.x != 0 && r.y != 0
                 && r.x + r.width < 640 && r.y + r.height < 480
+                && r.width < whlimit0 && r.height < whlimit0
                     ) {
                 cout << r.x << "," << r.y << "," << r.height << "," << r.width << ",";
                 if(r.height < whlimit1 && r.width < whlimit1) {
