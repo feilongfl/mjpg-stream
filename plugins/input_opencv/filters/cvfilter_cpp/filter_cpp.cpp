@@ -303,10 +303,12 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 		calMat = KeystoneCorrection(calMat, src);//梯形校正
 
-        /*
-		//HSVRange hsv = { 0,180,30,60,254,255 };
-		//calMat = ColorFinder(calMat,hsv,5); //背景提取
 
+		//HSVRange hsv = { 0,180,30,60,254,255 };
+
+		calMat = ColorFinder(calMat,hsvR,5); //背景提取
+
+        /*
 		//vector<vector<cv::Point>> contours;
 		//连通域
 		//bitwise_not(calMat, calMat);//反色
