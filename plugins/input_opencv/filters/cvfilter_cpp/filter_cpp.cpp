@@ -318,7 +318,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		{
 #define whlimit 20
 			cv::Rect r = cv::boundingRect(contours[i]);
-            cout << r.height << "," << r.width << endl;
+            cout << r.x << "," << r.y << "," << r.height << "," << r.width << endl;
 			if (Approximate(r.height, r.width, 10) && r.height < whlimit && r.width < whlimit)
 				cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
