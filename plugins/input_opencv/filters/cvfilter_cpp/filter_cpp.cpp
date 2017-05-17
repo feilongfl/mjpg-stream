@@ -314,8 +314,8 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 		for (size_t i = 0; i < contours.size(); i++)
 		{
-#define whlimit1 40
-#define whlimit2 80
+#define whlimit1 35
+#define whlimit2 90
 			cv::Rect r = cv::boundingRect(contours[i]);
 			if (Approximate(r.height, r.width, 30)
                 && r.x != 0 && r.y != 0) {
