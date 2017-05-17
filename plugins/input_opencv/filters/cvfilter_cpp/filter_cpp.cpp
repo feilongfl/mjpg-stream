@@ -233,13 +233,13 @@ vector<Point> getCorners(Mat src)
 }
 
 //梯形校正
-Mat KeystoneCorrection(Mat src,Mat oriSrc)//去除背景图像，原始图像
+Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图像，原始图像
 {
 	Mat dst;
 	//canny
 	Mat can;
-	//Canny(src, can, 3, 9, 3);
-    cvtColor(src,can,COLOR_BGR2GRAY);
+	Canny(src, can, 3, 9, 3);
+    //cvtColor(src,can,COLOR_BGR2GRAY);
 	//Mat canBgr;
 	//cvtColor(can, canBgr, COLOR_GRAY2BGR);
 	vector<Vec2f> lines;
@@ -255,10 +255,19 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc)//去除背景图像，原始图像
 
 	//准备标准矩形
 	vector<Point> corners = getCorners(src);
-
 	//梯形矫正
 	Mat transform = findHomography(cornersRect, corners);
-	warpPerspective(oriSrc, dst, transform, src.size());
+    if(!debug)
+	    warpPerspective(oriSrc, dst, transform, src.size());
+    else
+    {
+        dst = src;
+        line(dst,line4.lineUp.pt1,line4.lineUp.pt2,Scalar(0,0,255));
+        line(dst,line4.lineDown.pt1,line4.lineDown.pt2,Scalar(0,0,255));
+        line(dst,line4.lineLeft.pt1,line4.lineLeft.pt2,Scalar(0,0,255));
+        line(dst,line4.lineRight.pt1,line4.lineRight.pt2,Scalar(0,0,255));
+    }
+
 
 	return dst;
 }
@@ -286,7 +295,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	try
 	{
 		calMat = ColorFinder(src); //背景提取
-		calMat = KeystoneCorrection(calMat, src);//梯形校正
+		calMat = KeystoneCorrection(calMat, src,true);//梯形校正
 
 		dst = calMat;
 		HSVRange hsv = { 0,180,30,60,254,255 };
