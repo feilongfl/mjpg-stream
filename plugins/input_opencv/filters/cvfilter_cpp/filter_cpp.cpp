@@ -243,30 +243,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//canny
 	Mat can;
 
-    Mat calMat;
-    bitwise_not(src, calMat);//反色
-    vector<vector<cv::Point>> contours;
-    //连通域
-    cv::findContours(calMat, contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
-
-    // 寻找最大连通域
-    double maxArea = 0;
-    vector<cv::Point> maxContour;
-    for(size_t i = 0; i < contours.size(); i++)
-    {
-        double area = cv::contourArea(contours[i]);
-        if (area > maxArea)
-        {
-            maxArea = area;
-            maxContour = contours[i];
-        }
-    }
-
-    cv::Rect maxRect = cv::boundingRect(maxContour);
-    cv::rectangle(oriSrc, maxRect, cv::Scalar(0,255,0));
-    return oriSrc;
-
-    return dst;
+    //return can;
 	Canny(src, can, 1, 3, 3);
     //return can;
     //cvtColor(src,can,COLOR_BGR2GRAY);
