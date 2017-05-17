@@ -302,12 +302,10 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 		calMat = ColorFinder(src,hsvR); //背景提取
 
 		calMat = KeystoneCorrection(calMat, src);//梯形校正
-
+        dst = calMat;//存储彩图
 
 		//HSVRange hsv = { 0,180,30,60,254,255 };
-
 		calMat = ColorFinder(calMat,hsvR,5); //背景提取
-
 
 		vector<vector<cv::Point>> contours;
 		//连通域
@@ -323,7 +321,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 				cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
         cout << "####################" << endl;
-        dst = calMat;
+        //dst = calMat;
 		//////////////////////////////////////////////////////////////////////////
 		//save last
 		LastImg = dst;
