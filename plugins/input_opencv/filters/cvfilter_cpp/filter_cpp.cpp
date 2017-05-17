@@ -125,7 +125,7 @@ lines_s lines2lines_s(Vec2f lines)
     pt2.x = cvRound(x0 - 1000 * (-b));
     pt2.y = cvRound(y0 - 1000 * (a));
 
-    lines_s l = { lines[i],rho,theta,pt1,pt2 };
+    lines_s l = { lines,rho,theta,pt1,pt2 };
     return l;
 }
 //直线分类
