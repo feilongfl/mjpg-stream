@@ -325,7 +325,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 			if (Approximate(r.height, r.width, 40)
                 && r.x != 0 && r.y != 0
                 && r.x + r.width < 640 && r.y + r.height < 480
-                && r.width < whlimit0 && r.height < whlimit0
+                && r.width > whlimit0 && r.height > whlimit0
                     ) {
                 cout << r.x << "," << r.y << "," << r.height << "," << r.width << ",";
                 if(r.height < whlimit1 && r.width < whlimit1) {
