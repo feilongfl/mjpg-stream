@@ -249,10 +249,12 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//区分上下左右
 	lines_s4v lineDist = DistinguishLines(lines);
 
-
-
 	//直线拟合，每个方向留下一根
 	lines_s4 line4 = LineFitting(lineDist);
+
+    ///this is BUG!!!
+    if(abs(line4.lineUp - line4.lineDown) < 10)
+        throw "上下直线误判";
 	//计算直线交点坐标
 	vector<Point> cornersRect = RectCrossCalc(line4);
 
