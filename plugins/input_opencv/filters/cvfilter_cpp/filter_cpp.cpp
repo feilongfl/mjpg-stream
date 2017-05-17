@@ -296,6 +296,8 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	try
 	{
 		calMat = ColorFinder(src); //背景提取
+        dst = calMat;
+        return;
 		calMat = KeystoneCorrection(calMat, src,true);//梯形校正
 
 		dst = calMat;
