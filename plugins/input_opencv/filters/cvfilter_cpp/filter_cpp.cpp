@@ -239,7 +239,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//canny
 	Mat can;
 	Canny(src, can, 3, 9, 3);
-    return can;
+    //return can;
     //cvtColor(src,can,COLOR_BGR2GRAY);
 	//Mat canBgr;
 	//cvtColor(can, canBgr, COLOR_GRAY2BGR);
@@ -248,6 +248,8 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 
 	//区分上下左右
 	lines_s4v lineDist = DistinguishLines(lines);
+
+
 
 	//直线拟合，每个方向留下一根
 	lines_s4 line4 = LineFitting(lineDist);
@@ -297,7 +299,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	{
         HSVRange hsvR = {80,140,0,200,0,255};
 		calMat = ColorFinder(src,hsvR); //背景提取
-        
+
 		calMat = KeystoneCorrection(calMat, src,true);//梯形校正
 
 		dst = calMat;
