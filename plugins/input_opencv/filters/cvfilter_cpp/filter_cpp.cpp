@@ -320,6 +320,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 				cv::rectangle(dst, r, cv::Scalar(0,0,255));
 		}
 */
+        dst = calMat;
 		//////////////////////////////////////////////////////////////////////////
 		//save last
 		LastImg = dst;
