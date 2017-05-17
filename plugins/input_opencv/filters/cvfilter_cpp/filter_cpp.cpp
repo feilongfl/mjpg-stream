@@ -263,8 +263,8 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
     }
 
     cv::Rect maxRect = cv::boundingRect(maxContour);
-    cv::rectangle(src, maxRect, cv::Scalar(0,255,0));
-    return src;
+    cv::rectangle(oriSrc, maxRect, cv::Scalar(0,255,0));
+    return oriSrc;
 
     return dst;
 	Canny(src, can, 1, 3, 3);
