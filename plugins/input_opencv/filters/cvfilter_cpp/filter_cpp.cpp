@@ -253,7 +253,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	lines_s4 line4 = LineFitting(lineDist);
 
     ///this is BUG!!!
-    if(abs(line4.lineUp - line4.lineDown) < 10)
+    if(abs(line4.lineUp.rho - line4.lineDown.rho) < 10)
         throw "上下直线误判";
 	//计算直线交点坐标
 	vector<Point> cornersRect = RectCrossCalc(line4);
