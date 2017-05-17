@@ -113,6 +113,21 @@ int HorizontalLineRhoAverage(vector<Vec2f> lines)
 	return rhoAverageH;
 }
 
+
+lines_s lines2lines_s(Vec2f lines)
+{
+    float rho = lines[0], theta = lines[1];
+    Point pt1, pt2;
+    double a = cos(theta), b = sin(theta);
+    double x0 = a*rho, y0 = b*rho;
+    pt1.x = cvRound(x0 + 1000 * (-b));
+    pt1.y = cvRound(y0 + 1000 * (a));
+    pt2.x = cvRound(x0 - 1000 * (-b));
+    pt2.y = cvRound(y0 - 1000 * (a));
+
+    lines_s l = { lines[i],rho,theta,pt1,pt2 };
+    return l;
+}
 //直线分类
 lines_s4v DistinguishLines(vector<Vec2f> lines)
 {
@@ -120,20 +135,11 @@ lines_s4v DistinguishLines(vector<Vec2f> lines)
 
 	for (size_t i = 0; i < lines.size(); i++)
 	{
-		float rho = lines[i][0], theta = lines[i][1];
-		Point pt1, pt2;
-		double a = cos(theta), b = sin(theta);
-		double x0 = a*rho, y0 = b*rho;
-		pt1.x = cvRound(x0 + 1000 * (-b));
-		pt1.y = cvRound(y0 + 1000 * (a));
-		pt2.x = cvRound(x0 - 1000 * (-b));
-		pt2.y = cvRound(y0 - 1000 * (a));
+        lines_s l = lines2lines_s( lines[i] );
 
-		lines_s l = { lines[i],rho,theta,pt1,pt2 };
-
-		if (theta > CV_PI / 4 && theta < CV_PI * 3 / 4)
+        if (l.theta > CV_PI / 4 && l.theta < CV_PI * 3 / 4)
 		{
-			if (rho > HorizontalLineRhoAverage(lines))//下
+			if (l.rho > HorizontalLineRhoAverage(lines))//下
 			{
 				lineDist.lineDowns.push_back(l);
 			}
@@ -142,7 +148,7 @@ lines_s4v DistinguishLines(vector<Vec2f> lines)
 				lineDist.lineUps.push_back(l);
 			}
 		}
-		else if (theta > CV_PI * 3 / 4 && theta < CV_PI * 5 / 4)//右
+		else if (l.theta > CV_PI * 3 / 4 && l.theta < CV_PI * 5 / 4)//右
 		{
 			lineDist.lineRights.push_back(l);
 		}
@@ -244,6 +250,17 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	vector<Vec2f> lines;
 	HoughLines(can, lines, 1, CV_PI / 180, 100, 0, 0);
 
+//////////////////////////////////////
+    //debug
+    dst = oriSrc;
+
+    for (size_t i = 0; i < lines.size();i++)
+    {
+        line(dst,lines2lines_s(lines[i]).pt1,lines2lines_s(lines[i]).pt2,Scalar(0,0,255));
+    }
+
+    return dst;
+//////////////////////////////////////
 	//区分上下左右
 	lines_s4v lineDist = DistinguishLines(lines);
 
@@ -303,6 +320,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 		calMat = KeystoneCorrection(calMat, src);//梯形校正
         dst = calMat;//存储彩图
+        return;
 
 		//HSVRange hsv = { 0,180,30,60,254,255 };
 		calMat = ColorFinder(calMat,hsvR,5); //背景提取
