@@ -239,6 +239,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//canny
 	Mat can;
 	Canny(src, can, 3, 9, 3);
+    return can;
     //cvtColor(src,can,COLOR_BGR2GRAY);
 	//Mat canBgr;
 	//cvtColor(can, canBgr, COLOR_GRAY2BGR);
