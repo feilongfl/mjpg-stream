@@ -378,8 +378,8 @@ lines_s4 lineFit(lines_dir linesDir) {
 
 	line.lineUp = lineV.line1;
 	line.lineDown = lineV.line2;
-	line.lineLeft = lineH.line1;
-	line.lineRight = lineH.line2;
+	line.lineLeft = lineH.line2;
+	line.lineRight = lineH.line1;
 
 	return line;
 }
