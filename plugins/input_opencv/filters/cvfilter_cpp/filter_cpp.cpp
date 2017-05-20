@@ -140,6 +140,7 @@ lines_s4v DistinguishLines(vector<Vec2f> lines)
 
         if (l.theta > CV_PI / 4 && l.theta < CV_PI * 3 / 4)
 		{
+			/*
 			if (l.rho > HorizontalLineRhoAverage(lines))//下
 			{
 				lineDist.lineDowns.push_back(l);
@@ -148,6 +149,9 @@ lines_s4v DistinguishLines(vector<Vec2f> lines)
 			{
 				lineDist.lineUps.push_back(l);
 			}
+			*/
+			lineDist.lineUps.push_back(l);
+
 		}
 		else if (l.theta > CV_PI * 3 / 4 && l.theta < CV_PI * 5 / 4)//右
 		{
