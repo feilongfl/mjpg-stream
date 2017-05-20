@@ -102,16 +102,30 @@ Point CrossPoint(const lines_s *line1, const lines_s *line2)
 int HorizontalLineRhoAverage(vector<Vec2f> lines)
 {
 	int rhoAverageH = 0;
-	size_t i;
-	for (i = 0; i < lines.size(); i++)
+	size_t is;
+	for (size_t i = 0; i < lines.size(); i++)
 	{
 		float theta = lines[i][1];
 		if (theta > CV_PI / 4 && theta < CV_PI * 3 / 4) {
 			rhoAverageH += lines[i][0];
+			is ++;
 		}
 	}
-	rhoAverageH /= i;
+	rhoAverageH /= is;
 	return rhoAverageH;
+}
+
+//计算水平直线theat平均值
+int LineTheatAverage(vector<Vec2f> lines)
+{
+	int theatAverage = 0;
+	size_t i;
+	for (i = 0; i < lines.size(); i++)
+	{
+		theatAverage += lines[i][1];
+	}
+	theatAverage /= i;
+	return theatAverage;
 }
 
 
