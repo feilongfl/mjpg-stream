@@ -251,20 +251,29 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	HoughLines(can, lines, 1, CV_PI / 360, 70, 0, 0);
 
 //////////////////////////////////////
+
     //debug
     dst = oriSrc;
 
+	/*
 	cout << "###############################" << endl;
     for (size_t i = 0; i < lines.size();i++)
     {
         line(dst,lines2lines_s(lines[i]).pt1,lines2lines_s(lines[i]).pt2,Scalar(0,0,255));
 		cout << lines2lines_s(lines[i]).rho << "," << lines2lines_s(lines[i]).theta << endl;
     }
-
-    return dst;
+*/
+    //return dst;
 //////////////////////////////////////
 	//区分上下左右
 	lines_s4v lineDist = DistinguishLines(lines);
+
+	cout << "################################" << endl;
+	for (size_t i = 0; i < lines.size();i++)
+	{
+		line(dst,lineDist.lineUps[i].pt1,lineDist.lineUps[i].pt2,Scalar(0,0,255));
+		cout << lineDist.lineUps[i].rho << "," << lineDist.lineUps[i].theta << endl;
+	}
 
 	//直线拟合，每个方向留下一根
 	lines_s4 line4 = LineFitting(lineDist);
