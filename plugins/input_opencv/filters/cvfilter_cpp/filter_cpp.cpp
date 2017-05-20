@@ -260,11 +260,11 @@ float linesRhoAverage(vector<lines_s> lines,bool m = false)
 	max = (lines[0].rho > lines[lines.size() - 1].rho)?
 		  lines[0].rho : lines[lines.size() - 1].rho;
 
-#define argNum 4
+#define argNum 0
 	if(m)
-		arg = max - (max - min) / argNum;
+		arg = max - (max - min) * argNum;
 	else
-		arg = min + (max - min) / argNum;
+		arg = min + (max - min) * argNum;
 
 #endif
 	return arg;
