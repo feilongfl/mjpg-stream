@@ -285,7 +285,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		theat_arg += lines[i].theta;
 	}
 	lines_d_average /= lines.size() - 1;
-	theat_arg += lines[lines.size()].theta;
+	theat_arg += lines[lines.size() - 1].theta;
 	theat_arg /= lines.size();
 	//cout << lines_d_average;
 
