@@ -431,13 +431,15 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//	line(dst,lineDist.H[i].pt1,lineDist.H[i].pt2,Scalar(0,255,0));
 		//cout << lineDist.H[i].rho << "," << lineDist.H[i].theta << endl;
 	}
+*/
 
-	line(dst,line4.lineUp.pt1,line4.lineUp.pt2,Scalar(0,255,0),5);
-	line(dst,line4.lineDown.pt1,line4.lineDown.pt2,Scalar(0,255,255),5);
-	line(dst,line4.lineLeft.pt1,line4.lineLeft.pt2,Scalar(0,255,0),5);
-	line(dst,line4.lineRight.pt1,line4.lineRight.pt2,Scalar(0,255,255),5);
+
+	line(dst,line4.lineUp.pt1,line4.lineUp.pt2,Scalar(0,255,0));
+	line(dst,line4.lineDown.pt1,line4.lineDown.pt2,Scalar(0,255,255));
+	line(dst,line4.lineLeft.pt1,line4.lineLeft.pt2,Scalar(0,255,0));
+	line(dst,line4.lineRight.pt1,line4.lineRight.pt2,Scalar(0,255,255));
 	return dst;
- */
+
 
 
 	//直线拟合，每个方向留下一根
@@ -497,7 +499,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 		calMat = KeystoneCorrection(calMat, src);//梯形校正
         dst = calMat;//存储彩图
-        //return;
+        return;
 
 		//HSVRange hsv = { 0,180,30,60,254,255 };
 		calMat = ColorFinder(calMat,hsvR,5); //背景提取
