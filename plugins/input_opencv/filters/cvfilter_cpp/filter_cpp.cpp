@@ -261,6 +261,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		lines_d_average += lines[i + 1].rho - lines[i].rho;
 	}
 	lines_d_average /= lines.size() - 1;
+	cout << lines_d_average;
 
 	vector<vector<lines_s>> linesNew;
 	vector<lines_s> linesTemp;
@@ -331,9 +332,9 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//区分上下左右
 	lines_dir lineDist = DistinguishLines(lines);
 
+	cout << "################################" << endl;
 	lines_s4 line4 = lineFit (lineDist);
 
-	cout << "################################" << endl;
 	for (size_t i = 0; i < lineDist.V.size();i++)
 	{
 		line(dst,lineDist.V[i].pt1,lineDist.V[i].pt2,Scalar(0,0,255));
