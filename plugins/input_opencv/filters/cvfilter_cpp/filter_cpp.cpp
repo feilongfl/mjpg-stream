@@ -324,7 +324,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	{
 		for(size_t j = 0;j < linesNew[i].size();j ++) {
 			//cout << "i:" << i << "j:" << j << ": " << linesNew[i][j].rho << endl;
-			cout << linesNew[i][j].rho << "\t";
+			cout << linesNew[i][j].rho << "," << linesNew[i][j].theta << "\t";
 		}
 		cout << endl;
 	}
