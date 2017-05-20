@@ -259,6 +259,7 @@ float linesTheatAverage(vector<lines_s> lines)
 		arg += line.theta;
 	}
 	arg /= lines.size();
+	cout << "arg: " << arg << endl;
 	return arg;
 }
 
