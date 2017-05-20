@@ -354,12 +354,12 @@ lines_s4 lineFit(lines_dir linesDir) {
 	lines_s4 line;
 
 	lines_s2 lineV = lineFit1(linesDir.V);
-	//lines_s2 lineH = lineFit1(linesDir.H);
+	lines_s2 lineH = lineFit1(linesDir.H);
 
 	line.lineUp = lineV.line1;
 	line.lineDown = lineV.line2;
-	//line.lineLeft = lineH.line1;
-	//line.lineRight = lineH.line2;
+	line.lineLeft = lineH.line1;
+	line.lineRight = lineH.line2;
 
 	return line;
 }
@@ -413,6 +413,8 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 
 	line(dst,line4.lineUp.pt1,line4.lineUp.pt2,Scalar(0,255,255),5);
 	line(dst,line4.lineDown.pt1,line4.lineDown.pt2,Scalar(0,255,255),5);
+	line(dst,line4.lineLeft.pt1,line4.lineLeft.pt2,Scalar(0,255,255),5);
+	line(dst,line4.lineRight.pt1,line4.lineRight.pt2,Scalar(0,255,255),5);
 
 	return dst;
 /*
