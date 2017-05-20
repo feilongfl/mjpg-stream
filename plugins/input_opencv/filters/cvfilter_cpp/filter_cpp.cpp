@@ -241,6 +241,7 @@ vector<Point> getCorners(Mat src)
 	return corners;
 }
 
+//左、上m=false
 float linesRhoAverage(vector<lines_s> lines,bool m = false)
 {
 	float arg = 0;
@@ -259,7 +260,11 @@ float linesRhoAverage(vector<lines_s> lines,bool m = false)
 	max = (lines[0].rho > lines[lines.size() - 1].rho)?
 		  lines[0].rho : lines[lines.size() - 1].rho;
 
-	arg = min + (max - min) / 4;
+#define argNum 4
+	if(m)
+		arg = max - (max - min) / argNum;
+	else
+		arg = min + (max - min) / argNum;
 
 #endif
 	return arg;
@@ -365,8 +370,9 @@ lines_s2 lineFit1(vector<lines_s> lines)
 
 	//取出分类器数量最多的两个
 	//计算平均值（待定）
-	int rho1 = linesRhoAverage(linesNew[0]);
-	int rho2 = linesRhoAverage(linesNew[1]);
+	int rho1 = linesRhoAverage(linesNew[0],linesNew[0][0].rho > linesNew[1][0].rho);
+	int rho2 = linesRhoAverage(linesNew[1],linesNew[0][0].rho > linesNew[1][0].rho);
+
 	float theta1 = linesTheatAverage(linesNew[0]);
 	float theta2 = linesTheatAverage(linesNew[1]);
 
