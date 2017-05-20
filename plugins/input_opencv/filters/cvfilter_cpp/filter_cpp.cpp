@@ -261,7 +261,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		lines_d_average += lines[i + 1].rho - lines[i].rho;
 	}
 	lines_d_average /= lines.size() - 1;
-	//cout << lines_d_average;
+	cout << lines_d_average;
 
 	vector<vector<lines_s>> linesNew;
 	vector<lines_s> linesTemp;
@@ -280,6 +280,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		}
 	}
 
+	cout << "***************************" << endl;
 
 	for(size_t i = 0;i < linesNew.size() - 1;i ++)
 	{
