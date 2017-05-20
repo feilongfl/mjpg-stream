@@ -251,9 +251,35 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		 }
 	);
 
-	for(size_t i = 0;i < lines.size();i ++)
+	int lines_d_average = 0;
+	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
-		cout << lines[i].rho << endl;
+		lines_d_average += lines[i + 1].rho - lines[i].rho;
+	}
+	lines_d_average /= lines.size();
+
+	vector<vector<lines_s>> linesNew;
+	int m = 0,n = 0;
+	for(size_t i = 0;i < lines.size() - 1;i ++)
+	{
+		vector<lines_s> linesTemp;
+		if (lines[i + 1].rho - lines[i].rho < lines_d_average)
+		{
+			linesTemp.push_back(lines[i]);
+		}
+		else
+		{
+			linesNew.push_back(linesTemp);
+			linesTemp.clear();
+		}
+	}
+
+	for(size_t i = 0;i < linesNew.size() - 1;i ++)
+	{
+		for(size_t j = 0;j < linesNew[i].size() - 1;j ++) {
+			cout << linesNew[i][j].rho;
+		}
+		cout << endl;
 	}
 
 	return line;
