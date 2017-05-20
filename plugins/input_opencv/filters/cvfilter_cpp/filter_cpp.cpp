@@ -297,7 +297,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	//分类器排序
 	sort(linesNew.begin(),linesNew.end(),
 		[](vector<lines_s> linesA,vector<lines_s> linesB){
-			linesA.size() > linesB.size();
+			return linesA.size() > linesB.size();
 		});
 	//debug 显示分类结果
 	cout << "***************************" << endl;
