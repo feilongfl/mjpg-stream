@@ -249,7 +249,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
     //cvtColor(src,can,COLOR_BGR2GRAY);
 	//Mat canBgr;
 	//cvtColor(can, canBgr, COLOR_GRAY2BGR);
-//    return can;
+	//return can;
 	vector<Vec2f> lines;
 	HoughLines(can, lines, 1, CV_PI / 360, 120, 0, 0);
 
