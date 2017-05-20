@@ -269,12 +269,12 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	);
 
 	//debug输出
-	/*
+	cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
 	for(size_t i = 0;i < lines.size();i ++)
 	{
-		cout << lines[i].rho << endl;
+		cout << lines[i].rho << "\t";
 	}
-	*/
+	cout << endl;
 
 	//计算差值平均值,角度平均值
 	int lines_d_average = 0;
@@ -287,7 +287,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	lines_d_average /= lines.size() - 1;
 	theat_arg += lines[lines.size() - 1].theta;
 	theat_arg /= lines.size();
-	//cout << lines_d_average;
+	cout << "darg:" << lines_d_average << endl;
 
 	//计算分类器
 	vector<vector<lines_s>> linesNew;
@@ -306,7 +306,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 			}
 		}
 	}
-	if(lines.size() != 0) {
+	if(linesTemp.size() != 0) {
 		linesNew.push_back(linesTemp);
 		linesTemp.clear();
 	}
