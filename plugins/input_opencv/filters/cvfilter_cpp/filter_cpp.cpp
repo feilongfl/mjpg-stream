@@ -308,7 +308,8 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	vector<lines_s> linesTemp;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
-		if (abs(lines[i + 1].rho - lines[i].rho) < lines_d_average)
+		if (abs(lines[i + 1].rho - lines[i].rho)
+			< lines_d_average / 2) //分类器阈值
 		{
 			linesTemp.push_back(lines[i]);
 		}
