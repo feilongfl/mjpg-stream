@@ -253,7 +253,7 @@ float linesRhoAverage(vector<lines_s> lines,bool m = false)
 	}
 	arg /= lines.size();
 	//cout << "arg: " << arg << endl;
-#else if 1
+#elif 1
     float arg1,arg2;
 	for (size_t i = 0; i < lines.size() / 2; i++) {
 		arg1 += lines[i].rho;
