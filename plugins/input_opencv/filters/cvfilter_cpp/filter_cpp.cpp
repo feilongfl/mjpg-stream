@@ -265,9 +265,9 @@ float linesRhoAverage(vector<lines_s> lines,bool m = false)
 	}
 	int min,max;
 	min = (arg1 < arg2)?
-		  arg1 / lines.size() / 2 :arg2 / lines.size() / 2;
+		  arg1 / lines.size() * 2 :arg2 / lines.size() * 2;
 	max = (arg1 > arg2)?
-		  arg1 / lines.size() / 2 :arg2 / lines.size() / 2;
+		  arg1 / lines.size() * 2 :arg2 / lines.size() * 2;
 
 #define argNum 0
 	if(m)
