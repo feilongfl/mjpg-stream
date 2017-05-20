@@ -251,9 +251,9 @@ int linesRhoAverage(vector<lines_s> lines)
 	arg /= lines.size();
 	return arg;
 }
-int linesTheatAverage(vector<lines_s> lines)
+float linesTheatAverage(vector<lines_s> lines)
 {
-	int arg = 0;
+	float arg = 0;
 	for (auto line : lines)
 	{
 		arg += line.theta;
@@ -348,8 +348,8 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	//计算平均值（待定）
 	int rho1 = linesRhoAverage(linesNew[0]);
 	int rho2 = linesRhoAverage(linesNew[1]);
-	int theta1 = linesTheatAverage(linesNew[0]);
-	int theta2 = linesTheatAverage(linesNew[1]);
+	float theta1 = linesTheatAverage(linesNew[0]);
+	float theta2 = linesTheatAverage(linesNew[1]);
 
 	Vec2f line1,line2;
 	line1[0] = (rho1 < rho2)? rho1 : rho2;
