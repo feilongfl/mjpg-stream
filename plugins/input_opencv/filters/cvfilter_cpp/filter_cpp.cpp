@@ -419,25 +419,25 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//cout << "################################" << endl;
 	lines_s4 line4 = lineFit (lineDist);
 
-	/*
+
 	for (size_t i = 0; i < lineDist.V.size();i++)
 	{
-		line(dst,lineDist.V[i].pt1,lineDist.V[i].pt2,Scalar(0,0,255));
+	//	line(dst,lineDist.V[i].pt1,lineDist.V[i].pt2,Scalar(0,0,255));
 		//cout << lineDist.V[i].rho << "," << lineDist.V[i].theta << endl;
 	}
 
 	for (size_t i = 0; i < lineDist.H.size();i++)
 	{
-		line(dst,lineDist.H[i].pt1,lineDist.H[i].pt2,Scalar(0,255,0));
+	//	line(dst,lineDist.H[i].pt1,lineDist.H[i].pt2,Scalar(0,255,0));
 		//cout << lineDist.H[i].rho << "," << lineDist.H[i].theta << endl;
 	}
 
-	line(dst,line4.lineUp.pt1,line4.lineUp.pt2,Scalar(0,255,255),5);
+	line(dst,line4.lineUp.pt1,line4.lineUp.pt2,Scalar(0,255,0),5);
 	line(dst,line4.lineDown.pt1,line4.lineDown.pt2,Scalar(0,255,255),5);
-	line(dst,line4.lineLeft.pt1,line4.lineLeft.pt2,Scalar(0,255,255),5);
+	line(dst,line4.lineLeft.pt1,line4.lineLeft.pt2,Scalar(0,255,0),5);
 	line(dst,line4.lineRight.pt1,line4.lineRight.pt2,Scalar(0,255,255),5);
 	return dst;
-	*/
+
 /*
 	//直线拟合，每个方向留下一根
 	//lines_s4 line4 = LineFitting(lineDist);
