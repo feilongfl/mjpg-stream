@@ -245,7 +245,7 @@ vector<Point> getCorners(Mat src)
 float linesRhoAverage(vector<lines_s> lines,bool m = false)
 {
 	float arg = 0;
-#if 0
+#if 1
 	for (auto line : lines)
 	{
 		arg += line.rho;
@@ -253,7 +253,7 @@ float linesRhoAverage(vector<lines_s> lines,bool m = false)
 	}
 	arg /= lines.size();
 	//cout << "arg: " << arg << endl;
-#elif 1
+#elif 0
     float arg1,arg2;
 	for (size_t i = 0; i < lines.size() / 2; i++) {
 		arg1 += lines[i].rho;
