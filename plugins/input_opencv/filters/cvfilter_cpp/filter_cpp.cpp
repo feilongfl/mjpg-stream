@@ -269,7 +269,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	lines_s4v lineDist = DistinguishLines(lines);
 
 	cout << "################################" << endl;
-	for (size_t i = 0; i < lines.size();i++)
+	for (size_t i = 0; i < lineDist.lineUps.size();i++)
 	{
 		line(dst,lineDist.lineUps[i].pt1,lineDist.lineUps[i].pt2,Scalar(0,0,255));
 		cout << lineDist.lineUps[i].rho << "," << lineDist.lineUps[i].theta << endl;
