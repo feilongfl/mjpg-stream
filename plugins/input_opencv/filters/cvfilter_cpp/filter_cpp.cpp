@@ -278,7 +278,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 
 	//计算差值平均值,角度平均值
 	int lines_d_average = 0;
-	int theat_arg = 0;
+	float theat_arg = 0;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
 		lines_d_average += lines[i + 1].rho - lines[i].rho;
@@ -412,6 +412,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	}
 
 	line(dst,line4.lineUp.pt1,line4.lineUp.pt2,Scalar(0,255,255),5);
+	line(dst,line4.lineDown.pt1,line4.lineDown.pt2,Scalar(0,255,255),5);
 
 	return dst;
 /*
