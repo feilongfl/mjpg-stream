@@ -246,12 +246,15 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	lines_s2 line;
 
 	sort(lines.begin(), lines.end(),
-		 [](const int& a, const int& b) {
-			 return (lines[a].rho < lines[b].rho);
+		 [](lines_s a,lines_s b) {
+			 return (a.rho < b.rho);
 		 }
 	);
 
-
+	for(size_t i = 0;i < lines.size();i ++)
+	{
+		cout << lines[i].rho;
+	}
 
 	return line;
 }
