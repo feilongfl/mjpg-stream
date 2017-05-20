@@ -243,32 +243,36 @@ vector<Point> getCorners(Mat src)
 
 lines_s2 lineFit1(vector<lines_s> lines)
 {
+	//判断输入合法
 	if(lines.size() == 0)
 	{
 		throw "error：直线数量为零！";
 	}
 	lines_s2 line;
 
+	//排序
 	sort(lines.begin(), lines.end(),
 		 [](lines_s a,lines_s b) {
 			 return (a.rho < b.rho);
 		 }
 	);
 
+	//debug输出
 	for(size_t i = 0;i < lines.size();i ++)
 	{
 		cout << lines[i].rho << endl;
 	}
 
-
+	//计算差值平均值
 	int lines_d_average = 0;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
 		lines_d_average += lines[i + 1].rho - lines[i].rho;
 	}
 	lines_d_average /= lines.size() - 1;
-	cout << lines_d_average;
+	//cout << lines_d_average;
 
+	//计算分类器
 	vector<vector<lines_s>> linesNew;
 	vector<lines_s> linesTemp;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
@@ -290,12 +294,18 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		linesTemp.clear();
 	}
 
+	//分类器排序
+	sort(linesNew.begin(),linesNew.end(),
+		[](vector<lines_s> linesA,vector<lines_s> linesB){
+			linesA.size() > linesB.size();
+		});
+	//debug 显示分类结果
 	cout << "***************************" << endl;
-
 	for(size_t i = 0;i < linesNew.size();i ++)
 	{
 		for(size_t j = 0;j < linesNew[i].size();j ++) {
-			cout << "i:" << i << "j:" << j << ": " << linesNew[i][j].rho << endl;
+			//cout << "i:" << i << "j:" << j << ": " << linesNew[i][j].rho << endl;
+			cout << linesNew[i][j].rho << "\t";
 		}
 		cout << endl;
 	}
