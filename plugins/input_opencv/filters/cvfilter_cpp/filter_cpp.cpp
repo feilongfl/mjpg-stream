@@ -353,12 +353,12 @@ lines_s4 lineFit(lines_dir linesDir) {
 	lines_s4 line;
 
 	lines_s2 lineV = lineFit1(linesDir.V);
-	lines_s2 lineH = lineFit1(linesDir.H);
+	//lines_s2 lineH = lineFit1(linesDir.H);
 
 	line.lineUp = lineV.line1;
 	line.lineDown = lineV.line2;
-	line.lineLeft = lineH.line1;
-	line.lineRight = lineH.line2;
+	//line.lineLeft = lineH.line1;
+	//line.lineRight = lineH.line2;
 
 	return line;
 }
