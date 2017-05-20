@@ -253,6 +253,28 @@ float linesRhoAverage(vector<lines_s> lines,bool m = false)
 	}
 	arg /= lines.size();
 	//cout << "arg: " << arg << endl;
+#else if 1
+    float arg1,arg2;
+	for (size_t i = 0; i < lines.size() / 2; i++) {
+		arg1 += lines[i].rho;
+		//cout << line.rho << endl;
+	}
+	for (size_t i = lines.size() / 2; i < lines.size(); i++) {
+		arg2 += lines[i].rho;
+		//cout << line.rho << endl;
+	}
+	int min,max;
+	min = (arg1 < arg2)?
+		  arg1 / lines.size() / 2 :arg2 / lines.size() / 2;
+	max = (arg1 > arg2)?
+		  arg1 / lines.size() / 2 :arg2 / lines.size() / 2;
+
+#define argNum 0
+	if(m)
+		arg = max - (max - min) * argNum;
+	else
+		arg = min + (max - min) * argNum;
+
 #else
     int min,max;
 	min = (lines[0].rho < lines[lines.size() - 1].rho)?
