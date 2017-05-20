@@ -245,7 +245,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 
     //return can;
 	Canny(src, can, 1, 3, 3);
-    return can;
+    //return can;
     //cvtColor(src,can,COLOR_BGR2GRAY);
 	//Mat canBgr;
 	//cvtColor(can, canBgr, COLOR_GRAY2BGR);
@@ -326,7 +326,7 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 
 		//calMat = KeystoneCorrection(calMat, src);//梯形校正
         dst = calMat;//存储彩图
-        return;
+        //return;
 
 		//HSVRange hsv = { 0,180,30,60,254,255 };
 		calMat = ColorFinder(calMat,hsvR,5); //背景提取
