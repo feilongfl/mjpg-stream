@@ -262,7 +262,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 lines_s4 lineFit(lines_dir linesDir) {
 	lines_s4 line;
 
-
+	lineFit1(linesDir.V);
 
 	return line;
 }
