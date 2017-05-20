@@ -263,9 +263,9 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	lines_d_average /= lines.size() - 1;
 
 	vector<vector<lines_s>> linesNew;
+	vector<lines_s> linesTemp;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
-		vector<lines_s> linesTemp;
 		if (lines[i + 1].rho - lines[i].rho < lines_d_average)
 		{
 			linesTemp.push_back(lines[i]);
