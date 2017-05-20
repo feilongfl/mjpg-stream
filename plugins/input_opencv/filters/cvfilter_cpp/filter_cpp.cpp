@@ -241,26 +241,42 @@ vector<Point> getCorners(Mat src)
 	return corners;
 }
 
-float linesRhoAverage(vector<lines_s> lines)
+float linesRhoAverage(vector<lines_s> lines,bool m = false)
 {
 	float arg = 0;
+#if 0
 	for (auto line : lines)
 	{
 		arg += line.rho;
 		//cout << line.rho << endl;
 	}
 	arg /= lines.size();
-	cout << "arg: " << arg << endl;
+	//cout << "arg: " << arg << endl;
+#else
+    int min,max;
+	min = (lines[0].rho < lines[lines.size() - 1].rho)?
+		  	lines[0].rho : lines[lines.size() - 1].rho;
+	max = (lines[0].rho > lines[lines.size() - 1].rho)?
+		  lines[0].rho : lines[lines.size() - 1].rho;
+
+	arg = min + (max - min) / 4;
+
+#endif
 	return arg;
 }
-float linesTheatAverage(vector<lines_s> lines)
+float linesTheatAverage(vector<lines_s> lines,bool m = false)
 {
 	float arg = 0;
+#if 1
 	for (auto line : lines)
 	{
 		arg += line.theta;
 	}
 	arg /= lines.size();
+#else
+
+
+#endif
 	return arg;
 }
 
@@ -309,7 +325,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
 		if (abs(lines[i + 1].rho - lines[i].rho)
-			< lines_d_average) //分类器阈值
+			< lines_d_average / 2) //分类器阈值
 		{
 			linesTemp.push_back(lines[i]);
 		}
