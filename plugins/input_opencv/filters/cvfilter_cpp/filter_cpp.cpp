@@ -248,7 +248,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//Mat canBgr;
 	//cvtColor(can, canBgr, COLOR_GRAY2BGR);
 	vector<Vec2f> lines;
-	HoughLines(can, lines, 1, CV_PI / 360, 50, 0, 0);
+	HoughLines(can, lines, 1, CV_PI / 360, 70, 0, 0);
 
 //////////////////////////////////////
     //debug
