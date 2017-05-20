@@ -24,8 +24,16 @@ struct lines_s4 {
 	lines_s lineUp, lineDown, lineLeft, lineRight;
 };
 
+struct lines_s2 {
+	lines_s line1, line2;
+};
+
 struct lines_s4v {
 	vector<lines_s> lineUps, lineDowns, lineLefts, lineRights;
+};
+
+struct lines_dir {
+	vector<lines_s> H,V;
 };
 
 

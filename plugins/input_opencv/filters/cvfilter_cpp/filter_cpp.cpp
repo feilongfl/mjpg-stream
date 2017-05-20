@@ -144,36 +144,22 @@ lines_s lines2lines_s(Vec2f lines)
     return l;
 }
 //直线分类
-lines_s4v DistinguishLines(vector<Vec2f> lines)
+lines_dir DistinguishLines(vector<Vec2f> lines)
 {
-	lines_s4v lineDist;
+	lines_dir lineDist;
 
 	for (size_t i = 0; i < lines.size(); i++)
 	{
         lines_s l = lines2lines_s( lines[i] );
 
+		//水平
         if (l.theta > CV_PI / 4 && l.theta < CV_PI * 3 / 4)
 		{
-			/*
-			if (l.rho > HorizontalLineRhoAverage(lines))//下
-			{
-				lineDist.lineDowns.push_back(l);
-			}
-			else//上
-			{
-				lineDist.lineUps.push_back(l);
-			}
-			*/
-			lineDist.lineUps.push_back(l);
-
+			lineDist.V.push_back(l);
 		}
-		else if (l.theta > CV_PI * 3 / 4 && l.theta < CV_PI * 5 / 4)//右
+		else//竖直
 		{
-			lineDist.lineRights.push_back(l);
-		}
-		else//左
-		{
-			lineDist.lineLefts.push_back(l);
+			lineDist.H.push_back(l);
 		}
 	}
 
@@ -255,6 +241,29 @@ vector<Point> getCorners(Mat src)
 	return corners;
 }
 
+lines_s2 lineFit1(vector<lines_s> lines)
+{
+	lines_s2 line;
+
+	sort(lines.begin(), lines.end(),
+		 [](const int& a, const int& b) {
+			 return (lines[a].rho < lines[b].rho);
+		 }
+	);
+
+
+
+	return line;
+}
+
+lines_s4 lineFit(lines_dir linesDir) {
+	lines_s4 line;
+
+
+
+	return line;
+}
+
 //梯形校正
 Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图像，原始图像
 {
@@ -285,13 +294,21 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
     //return dst;
 //////////////////////////////////////
 	//区分上下左右
-	lines_s4v lineDist = DistinguishLines(lines);
+	lines_dir lineDist = DistinguishLines(lines);
+
+	lines_s4 line4 = lineFit (lines);
 
 	cout << "################################" << endl;
-	for (size_t i = 0; i < lineDist.lineUps.size();i++)
+	for (size_t i = 0; i < lineDist.V.size();i++)
 	{
-		line(dst,lineDist.lineUps[i].pt1,lineDist.lineUps[i].pt2,Scalar(0,0,255));
-		cout << lineDist.lineUps[i].rho << "," << lineDist.lineUps[i].theta << endl;
+		line(dst,lineDist.V[i].pt1,lineDist.V[i].pt2,Scalar(0,0,255));
+		//cout << lineDist.V[i].rho << "," << lineDist.V[i].theta << endl;
+	}
+
+	for (size_t i = 0; i < lineDist.H.size();i++)
+	{
+		line(dst,lineDist.H[i].pt1,lineDist.H[i].pt2,Scalar(0,255,0));
+		//cout << lineDist.H[i].rho << "," << lineDist.H[i].theta << endl;
 	}
 
 	return dst;
