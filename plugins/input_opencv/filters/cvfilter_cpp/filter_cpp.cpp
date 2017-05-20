@@ -269,12 +269,14 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	);
 
 	//debug输出
+	/*
 	cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << endl;
 	for(size_t i = 0;i < lines.size();i ++)
 	{
 		cout << lines[i].rho << "\t";
 	}
 	cout << endl;
+	 */
 
 	//计算差值平均值,角度平均值
 	int lines_d_average = 0;
