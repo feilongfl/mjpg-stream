@@ -536,6 +536,13 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         else
             dst = src;
 	}
+	catch (...) {
+		cout << "unknow error!" << endl;
+		if(work)//read last
+			dst = LastImg;
+		else
+			dst = src;
+	}
 
 }
 
