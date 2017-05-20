@@ -253,7 +253,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 
 	for(size_t i = 0;i < lines.size();i ++)
 	{
-		cout << lines[i].rho;
+		cout << lines[i].rho << endl;
 	}
 
 	return line;
@@ -299,7 +299,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//区分上下左右
 	lines_dir lineDist = DistinguishLines(lines);
 
-	lines_s4 line4 = lineFit (lines);
+	lines_s4 line4 = lineFit (lineDist);
 
 	cout << "################################" << endl;
 	for (size_t i = 0; i < lineDist.V.size();i++)
