@@ -249,12 +249,15 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
     //cvtColor(src,can,COLOR_BGR2GRAY);
 	//Mat canBgr;
 	//cvtColor(can, canBgr, COLOR_GRAY2BGR);
-    return can;
+//    return can;
 	vector<Vec2f> lines;
-	HoughLines(can, lines, 1, CV_PI / 180, 100, 0, 0);
+	HoughLines(can, lines, 1, CV_PI / 360, 120, 0, 0);
 
 //////////////////////////////////////
     //debug
+    //
+    //
+    /*
     dst = oriSrc;
 
     for (size_t i = 0; i < lines.size();i++)
@@ -262,7 +265,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
         line(dst,lines2lines_s(lines[i]).pt1,lines2lines_s(lines[i]).pt2,Scalar(0,0,255));
     }
 
-    return dst;
+    return dst;*/
 //////////////////////////////////////
 	//区分上下左右
 	lines_s4v lineDist = DistinguishLines(lines);
@@ -321,9 +324,9 @@ void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
         HSVRange hsvR = {80,140,0,200,0,255};
 		calMat = ColorFinder(src,hsvR); //背景提取
 
-		calMat = KeystoneCorrection(calMat, src);//梯形校正
+		//calMat = KeystoneCorrection(calMat, src);//梯形校正
         dst = calMat;//存储彩图
-        return;
+//        return;
 
 		//HSVRange hsv = { 0,180,30,60,254,255 };
 		calMat = ColorFinder(calMat,hsvR,5); //背景提取
