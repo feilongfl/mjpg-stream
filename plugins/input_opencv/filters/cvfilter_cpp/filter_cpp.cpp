@@ -270,7 +270,7 @@ float linesRhoAverage(vector<lines_s> lines,bool m = false)
 		  arg1 / (lines.size() / 2) :arg2 / (lines.size() / 2);
 
 #define argNum 0
-	if(m)
+	if(!m)
 		arg = max - (max - min) * argNum;
 	else
 		arg = min + (max - min) * argNum;
