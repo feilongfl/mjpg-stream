@@ -260,7 +260,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	{
 		lines_d_average += lines[i + 1].rho - lines[i].rho;
 	}
-	lines_d_average /= lines.size();
+	lines_d_average /= lines.size() - 1;
 
 	vector<vector<lines_s>> linesNew;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
@@ -272,8 +272,10 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		}
 		else
 		{
-			linesNew.push_back(linesTemp);
-			linesTemp.clear();
+			if(lines.size() != 0) {
+				linesNew.push_back(linesTemp);
+				linesTemp.clear();
+			}
 		}
 	}
 
@@ -329,7 +331,7 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 	//区分上下左右
 	lines_dir lineDist = DistinguishLines(lines);
 
-	//lines_s4 line4 = lineFit (lineDist);
+	lines_s4 line4 = lineFit (lineDist);
 
 	cout << "################################" << endl;
 	for (size_t i = 0; i < lineDist.V.size();i++)
