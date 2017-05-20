@@ -275,6 +275,8 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 		cout << lineDist.lineUps[i].rho << "," << lineDist.lineUps[i].theta << endl;
 	}
 
+	return dst;
+
 	//直线拟合，每个方向留下一根
 	lines_s4 line4 = LineFitting(lineDist);
 
