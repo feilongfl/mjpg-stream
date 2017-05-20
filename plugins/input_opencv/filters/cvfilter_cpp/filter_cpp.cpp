@@ -299,7 +299,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	lines_d_average /= lines.size() - 1;
 	theat_arg += lines[lines.size() - 1].theta;
 	theat_arg /= lines.size();
-	cout << "darg:" << lines_d_average << endl;
+	//cout << "darg:" << lines_d_average << endl;
 
 	//计算分类器
 	vector<vector<lines_s>> linesNew;
@@ -357,8 +357,9 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	line1[1] = (rho1 < rho2)? theta1 : theta2;
 	line2[1] = (rho1 > rho2)? theta1 : theta2;
 
-
-	cout << "theat: " << theat_arg << endl;
+	cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" << endl;
+	cout << "line1: " << line1[0] << "," << line1[1] << "\t";
+	cout << "line2: " << line2[0] << "," << line2[1] << endl;
 
 	line.line1 = lines2lines_s(line1);
 	line.line2 = lines2lines_s(line2);
