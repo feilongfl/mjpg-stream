@@ -255,9 +255,9 @@ int linesRhoAverage(vector<lines_s> lines)
 lines_s2 lineFit1(vector<lines_s> lines)
 {
 	//判断输入合法
-	if(lines.size() == 0)
+	if(lines.size() < 3)
 	{
-		throw "error：直线数量为零！";
+		throw "error：直线数量过少！";
 	}
 	lines_s2 line;
 
