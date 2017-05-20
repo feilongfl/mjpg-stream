@@ -281,7 +281,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	float theat_arg = 0;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
-		lines_d_average += lines[i + 1].rho - lines[i].rho;
+		lines_d_average += abs(lines[i + 1].rho - lines[i].rho);
 		theat_arg += lines[i].theta;
 	}
 	lines_d_average /= lines.size() - 1;
@@ -294,7 +294,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	vector<lines_s> linesTemp;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
-		if (lines[i + 1].rho - lines[i].rho < lines_d_average)
+		if (abs(lines[i + 1].rho - lines[i].rho) < lines_d_average)
 		{
 			linesTemp.push_back(lines[i]);
 		}
