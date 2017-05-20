@@ -291,6 +291,7 @@ bool Approximate(int num1, int num2, int error)
 
 void filter_process(void* filter_ctx, Mat &src, Mat &dst) {
 	// TODO insert your filter code here
+	//debug
 
 	Mat trans(src);
 
