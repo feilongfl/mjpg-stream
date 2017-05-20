@@ -342,6 +342,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	line2[0] = (rho1 > rho2)? rho1 : rho2;
 
 	line1[1] = line2[1] = theat_arg;
+	cout << "theat: " << theat_arg << endl;
 
 	line.line1 = lines2lines_s(line1);
 	line.line2 = lines2lines_s(line2);
