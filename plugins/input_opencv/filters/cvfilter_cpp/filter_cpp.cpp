@@ -251,6 +251,16 @@ int linesRhoAverage(vector<lines_s> lines)
 	arg /= lines.size();
 	return arg;
 }
+int linesTheatAverage(vector<lines_s> lines)
+{
+	int arg = 0;
+	for (auto line : lines)
+	{
+		arg += line.theta;
+	}
+	arg /= lines.size();
+	return arg;
+}
 
 lines_s2 lineFit1(vector<lines_s> lines)
 {
@@ -338,12 +348,16 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	//计算平均值（待定）
 	int rho1 = linesRhoAverage(linesNew[0]);
 	int rho2 = linesRhoAverage(linesNew[1]);
+	int theta1 = linesTheatAverage(linesNew[0]);
+	int theta2 = linesTheatAverage(linesNew[1]);
 
 	Vec2f line1,line2;
 	line1[0] = (rho1 < rho2)? rho1 : rho2;
 	line2[0] = (rho1 > rho2)? rho1 : rho2;
+	line1[1] = (rho1 < rho2)? theta1 : theta2;
+	line2[1] = (rho1 > rho2)? theta1 : theta2;
 
-	line1[1] = line2[1] = theat_arg;
+
 	cout << "theat: " << theat_arg << endl;
 
 	line.line1 = lines2lines_s(line1);
