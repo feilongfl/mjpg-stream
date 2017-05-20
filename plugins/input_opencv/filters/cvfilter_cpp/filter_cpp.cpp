@@ -249,6 +249,7 @@ int linesRhoAverage(vector<lines_s> lines)
 		arg += line.rho;
 	}
 	arg /= lines.size();
+	cout << "arg: " << arg << endl;
 	return arg;
 }
 float linesTheatAverage(vector<lines_s> lines)
@@ -259,7 +260,6 @@ float linesTheatAverage(vector<lines_s> lines)
 		arg += line.theta;
 	}
 	arg /= lines.size();
-	cout << "arg: " << arg << endl;
 	return arg;
 }
 
