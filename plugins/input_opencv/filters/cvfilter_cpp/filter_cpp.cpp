@@ -300,7 +300,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		}
 		else
 		{
-			if(lines.size() != 0) {
+			if(linesTemp.size() != 0) {
 				linesNew.push_back(linesTemp);
 				linesTemp.clear();
 			}
