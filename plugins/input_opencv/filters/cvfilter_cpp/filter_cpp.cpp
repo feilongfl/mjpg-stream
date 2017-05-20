@@ -254,9 +254,11 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
     //debug
     dst = oriSrc;
 
+	cout << "###############################" << endl;
     for (size_t i = 0; i < lines.size();i++)
     {
         line(dst,lines2lines_s(lines[i]).pt1,lines2lines_s(lines[i]).pt2,Scalar(0,0,255));
+		cout << lines2lines_s(lines[i]).rho << "," << lines2lines_s(lines[i]).theta << endl;
     }
 
     return dst;
