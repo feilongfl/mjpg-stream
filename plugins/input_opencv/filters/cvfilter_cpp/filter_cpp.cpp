@@ -241,6 +241,17 @@ vector<Point> getCorners(Mat src)
 	return corners;
 }
 
+int linesRhoAverage(vector<lines_s> lines)
+{
+	int arg = 0;
+	for (auto line : lines)
+	{
+		arg += line.rho;
+	}
+	arg /= lines.size();
+	return arg;
+}
+
 lines_s2 lineFit1(vector<lines_s> lines)
 {
 	//判断输入合法
@@ -258,18 +269,24 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	);
 
 	//debug输出
+	/*
 	for(size_t i = 0;i < lines.size();i ++)
 	{
 		cout << lines[i].rho << endl;
 	}
+	*/
 
-	//计算差值平均值
+	//计算差值平均值,角度平均值
 	int lines_d_average = 0;
+	int theat_arg = 0;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
 		lines_d_average += lines[i + 1].rho - lines[i].rho;
+		theat_arg += lines[i].theta;
 	}
 	lines_d_average /= lines.size() - 1;
+	theat_arg += lines[lines.size()].theta;
+	theat_arg /= lines.size();
 	//cout << lines_d_average;
 
 	//计算分类器
@@ -310,13 +327,38 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		cout << endl;
 	}
 
+	if(linesNew.size() < 2)
+	{
+		throw "error: 分类器少于两个！";
+	}
+
+	//取出分类器数量最多的两个
+	//计算平均值（待定）
+	int rho1 = linesRhoAverage(linesNew[0]);
+	int rho2 = linesRhoAverage(linesNew[1]);
+
+	Vec2f line1,line2;
+	line1[0] = (rho1 < rho2)? rho1 : rho2;
+	line2[0] = (rho1 > rho2)? rho1 : rho2;
+
+	line1[1] = line2[1] = theat_arg;
+
+	line.line1 = lines2lines_s(line1);
+	line.line2 = lines2lines_s(line2);
+
 	return line;
 }
 
 lines_s4 lineFit(lines_dir linesDir) {
 	lines_s4 line;
 
-	lineFit1(linesDir.V);
+	lines_s2 lineV = lineFit1(linesDir.V);
+	lines_s2 lineH = lineFit1(linesDir.H);
+
+	line.lineUp = lineV.line1;
+	line.lineDown = lineV.line2;
+	line.lineLeft = lineH.line1;
+	line.lineRight = lineH.line2;
 
 	return line;
 }
@@ -367,6 +409,8 @@ Mat KeystoneCorrection(Mat src,Mat oriSrc,bool debug = false)//去除背景图�
 		line(dst,lineDist.H[i].pt1,lineDist.H[i].pt2,Scalar(0,255,0));
 		//cout << lineDist.H[i].rho << "," << lineDist.H[i].theta << endl;
 	}
+
+	line(dst,line4.lineUp.pt1,line4.lineUp.pt2,Scalar(0,255,255),5);
 
 	return dst;
 /*
