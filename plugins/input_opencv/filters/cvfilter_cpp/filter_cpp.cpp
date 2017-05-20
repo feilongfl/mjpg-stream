@@ -282,10 +282,10 @@ lines_s2 lineFit1(vector<lines_s> lines)
 
 	cout << "***************************" << endl;
 
-	for(size_t i = 0;i < linesNew.size() - 1;i ++)
+	for(size_t i = 0;i < linesNew.size();i ++)
 	{
-		for(size_t j = 0;j < linesNew[i].size() - 1;j ++) {
-			cout << linesNew[i][j].rho << "\t";
+		for(size_t j = 0;j < linesNew[i].size();j ++) {
+			cout << "i:" << i << "j:" << j << ": " << linesNew[i][j].rho << endl;
 		}
 		cout << endl;
 	}
