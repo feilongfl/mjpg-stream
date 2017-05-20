@@ -255,6 +255,12 @@ lines_s2 lineFit1(vector<lines_s> lines)
 		 }
 	);
 
+	for(size_t i = 0;i < lines.size();i ++)
+	{
+		cout << lines[i].rho << endl;
+	}
+
+
 	int lines_d_average = 0;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
