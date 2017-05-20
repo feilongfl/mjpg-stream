@@ -245,7 +245,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 {
 	if(lines.size() == 0)
 	{
-		throw "线路错误";
+		throw "error：直线数量为零！";
 	}
 	lines_s2 line;
 
@@ -284,6 +284,10 @@ lines_s2 lineFit1(vector<lines_s> lines)
 				linesTemp.clear();
 			}
 		}
+	}
+	if(lines.size() != 0) {
+		linesNew.push_back(linesTemp);
+		linesTemp.clear();
 	}
 
 	cout << "***************************" << endl;
