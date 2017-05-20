@@ -243,6 +243,10 @@ vector<Point> getCorners(Mat src)
 
 lines_s2 lineFit1(vector<lines_s> lines)
 {
+	if(lines.size() == 0)
+	{
+		throw "线路错误";
+	}
 	lines_s2 line;
 
 	sort(lines.begin(), lines.end(),
@@ -259,7 +263,6 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	lines_d_average /= lines.size();
 
 	vector<vector<lines_s>> linesNew;
-	int m = 0,n = 0;
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
 		vector<lines_s> linesTemp;
@@ -273,6 +276,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 			linesTemp.clear();
 		}
 	}
+
 
 	for(size_t i = 0;i < linesNew.size() - 1;i ++)
 	{
