@@ -309,7 +309,7 @@ lines_s2 lineFit1(vector<lines_s> lines)
 	for(size_t i = 0;i < lines.size() - 1;i ++)
 	{
 		if (abs(lines[i + 1].rho - lines[i].rho)
-			< lines_d_average / 3) //分类器阈值
+			< lines_d_average) //分类器阈值
 		{
 			linesTemp.push_back(lines[i]);
 		}
