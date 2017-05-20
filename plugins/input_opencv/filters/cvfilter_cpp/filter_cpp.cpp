@@ -241,12 +241,13 @@ vector<Point> getCorners(Mat src)
 	return corners;
 }
 
-int linesRhoAverage(vector<lines_s> lines)
+float linesRhoAverage(vector<lines_s> lines)
 {
-	int arg = 0;
+	float arg = 0;
 	for (auto line : lines)
 	{
 		arg += line.rho;
+		//cout << line.rho << endl;
 	}
 	arg /= lines.size();
 	cout << "arg: " << arg << endl;
