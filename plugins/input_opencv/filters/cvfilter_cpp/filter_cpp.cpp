@@ -370,8 +370,8 @@ lines_s2 lineFit1(vector<lines_s> lines)
 
 	//取出分类器数量最多的两个
 	//计算平均值（待定）
-	int rho1 = linesRhoAverage(linesNew[0],linesNew[0][0].rho > linesNew[1][0].rho);
-	int rho2 = linesRhoAverage(linesNew[1],linesNew[0][0].rho > linesNew[1][0].rho);
+	int rho1 = linesRhoAverage(linesNew[0],linesNew[0][0].rho < linesNew[1][0].rho);
+	int rho2 = linesRhoAverage(linesNew[1],linesNew[0][0].rho < linesNew[1][0].rho);
 
 	float theta1 = linesTheatAverage(linesNew[0]);
 	float theta2 = linesTheatAverage(linesNew[1]);
